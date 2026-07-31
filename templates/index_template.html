@@ -4,55 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song Transliterations Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --border: #cbd5e1;
+            --border: #e2e8f0;
             --bg-alt: #f8fafc;
-            --text-main: #1e293b;
-            --text-muted: #475569;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            color: var(--text-main); 
-            line-height: 1.4; 
-            margin: 0; 
-            padding: 1rem; 
-            background: #ffffff;
-            font-size: 14px; 
-        }
-
+        body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.5; margin: 0; padding: 1.5rem; background: #ffffff; overflow-x: hidden; }
         .container { max-width: 1200px; margin: 0 auto; }
-
-        /* Compact Header */
-        header { border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem; margin-bottom: 1rem; }
-        h1 { margin: 0 0 0.25rem 0; font-size: 1.5rem; }
-        p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
-
-        /* Dense Data Table */
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        th, td { border: 1px solid var(--border); padding: 0.4rem 0.5rem; text-align: left; vertical-align: top; }
-        th { background-color: #e2e8f0; font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); }
         
-        /* Zebra Striping */
-        tbody tr:nth-child(even) { background-color: var(--bg-alt); }
-        tbody tr:hover { background-color: #e0f2fe; }
+        header { margin-bottom: 1.5rem; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2rem; color: #1e293b; }
+        p { color: var(--text-muted); margin: 0 0 1.5rem 0; }
 
-        .song-title { font-weight: 600; color: #2563eb; text-decoration: none; }
+        /* Toolbar: Search and Column Toggles */
+        .toolbar { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; background: var(--bg-alt); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1rem; }
+        .search-box { flex-grow: 1; min-width: 250px; padding: 0.6rem 1rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; font-family: inherit; }
+        
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-btn { background: white; border: 1px solid #cbd5e1; padding: 0.6rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 500; font-family: inherit; display: flex; align-items: center; gap: 0.5rem; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 110%; background-color: white; min-width: 200px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid var(--border); z-index: 100; padding: 0.5rem; }
+        .dropdown-content.show { display: block; }
+        .dropdown-content label { display: block; padding: 0.5rem; cursor: pointer; font-size: 0.9rem; user-select: none; border-radius: 4px; }
+        .dropdown-content label:hover { background: var(--bg-alt); }
+        .dropdown-content input { margin-right: 8px; }
+
+        /* Table Styles - Optimized for no horizontal scroll */
+        table { width: 100%; border-collapse: collapse; table-layout: auto; }
+        th, td { border-bottom: 1px solid var(--border); padding: 1rem 0.75rem; text-align: left; vertical-align: top; }
+        th { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; cursor: pointer; user-select: none; }
+        th:hover { color: var(--text-main); }
+        th::after { content: ' \21C5'; opacity: 0.3; }
+        
+        tbody tr:hover { background-color: #f1f5f9; }
+
+        /* Thumbnail Player */
+        .thumb-wrapper { position: relative; width: 120px; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .thumb-wrapper:hover { transform: scale(1.05); }
+        .thumb-img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+        .play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; }
+        .play-icon { background: #ef4444; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; padding-left: 2px; }
+
+        /* Typography */
+        .song-title { font-weight: 600; font-size: 1.1rem; color: var(--primary); text-decoration: none; display: block; margin-bottom: 0.25rem; }
         .song-title:hover { text-decoration: underline; }
+        .meta-text { font-size: 0.85rem; color: var(--text-muted); }
+        .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+        .tag { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; color: #475569; }
 
-        /* Responsive Mobile View */
+        /* Video Modal Styles */
+        dialog { border: none; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); padding: 0; max-width: 800px; width: 95%; background: black; margin: auto; }
+        dialog::backdrop { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); }
+        .modal-header { padding: 1rem; display: flex; justify-content: flex-end; background: #1e293b; }
+        .close-btn { background: #334155; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .close-btn:hover { background: #475569; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Responsive Mobile Stack */
         @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr { display: block; }
-            th { display: none; } /* Hide headers on mobile */
-            td { border: none; border-bottom: 1px solid var(--border); padding: 0.4rem 0.5rem; }
-            td:last-child { border-bottom: none; }
-            tbody tr { border: 1px solid var(--border); margin-bottom: 0.75rem; display: flex; flex-direction: column; }
-            td::before { font-weight: 600; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 0.2rem; }
-            td:nth-of-type(1)::before { content: "Song Title"; }
-            td:nth-of-type(2)::before { content: "Movie / Album"; }
-            td:nth-of-type(3)::before { content: "Singers"; }
+            th { display: none; }
+            td { display: block; padding: 0.5rem 0; border: none; }
+            tr { display: flex; flex-direction: column; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+            .thumb-wrapper { width: 100%; max-width: 300px; margin-bottom: 1rem; }
         }
     </style>
 </head>
@@ -61,28 +80,178 @@
 <div class="container">
     <header>
         <h1>Music Transliteration Archive</h1>
-        <p>A collection of song translations and vocabulary guides designed for non-native speakers.</p>
+        <p>Explore, search, and customize your view of the library.</p>
+        
+        <div class="toolbar">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search by song, singer, actor, movie..." onkeyup="filterTable()">
+            
+            <div class="dropdown">
+                <button class="dropdown-btn" onclick="toggleDropdown()">⚙️ Customize Columns</button>
+                <div id="columnMenu" class="dropdown-content">
+                    <!-- Column 0 is Play, Column 1 is Title (Always visible) -->
+                    <label><input type="checkbox" checked onchange="toggleColumn(2)"> Singers</label>
+                    <label><input type="checkbox" onchange="toggleColumn(3)"> Actors</label>
+                    <label><input type="checkbox" onchange="toggleColumn(4)"> Composer</label>
+                    <label><input type="checkbox" onchange="toggleColumn(5)"> Lyricist</label>
+                    <label><input type="checkbox" onchange="toggleColumn(6)"> Channel & Res</label>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <table>
+    <table id="songTable">
         <thead>
             <tr>
-                <th style="width: 40%;">Song Title</th>
-                <th style="width: 30%;">Movie / Album</th>
-                <th style="width: 30%;">Singers</th>
+                <th style="width: 130px;">Play</th>
+                <th onclick="sortList(1)">Track Info</th>
+                <th onclick="sortList(2)">Singers</th>
+                <!-- Hidden by default via CSS logic in JS -->
+                <th onclick="sortList(3)" style="display:none;">Actors</th>
+                <th onclick="sortList(4)" style="display:none;">Composer</th>
+                <th onclick="sortList(5)" style="display:none;">Lyricist</th>
+                <th onclick="sortList(6)" style="display:none;">Source</th>
             </tr>
         </thead>
         <tbody>
             {% for song in songs %}
             <tr>
-                <td><a href="{{ song.url }}" class="song-title">{{ song.title }}</a></td>
-                <td>{{ song.movie }} ({{ song.year }})</td>
-                <td>{{ song.singers }}</td>
+                <!-- Col 0: Thumbnail Player -->
+                <td>
+                    <div class="thumb-wrapper" onclick="openPlayer('{{ song.youtube_id }}')">
+                        <img src="https://i.ytimg.com/vi/{{ song.youtube_id }}/mqdefault.jpg" alt="Thumbnail" class="thumb-img" loading="lazy">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </td>
+                
+                <!-- Col 1: Track Info -->
+                <td>
+                    <a href="{{ song.url }}" class="song-title">{{ song.title }}</a>
+                    <span class="meta-text">{{ song.movie }} ({{ song.year }})</span>
+                </td>
+
+                <!-- Col 2: Singers -->
+                <td><span class="meta-text">{{ song.singers }}</span></td>
+
+                <!-- Col 3: Actors (Hidden by default) -->
+                <td style="display:none;">
+                    <div class="tag-list">
+                        {% if song.actors %}{% for actor in song.actors %}<span class="tag">{{ actor }}</span>{% endfor %}{% else %}<span class="tag">Unknown</span>{% endif %}
+                    </div>
+                </td>
+
+                <!-- Col 4: Composer (Hidden by default) -->
+                <td style="display:none;"><span class="meta-text">{{ song.composer }}</span></td>
+
+                <!-- Col 5: Lyricist (Hidden by default) -->
+                <td style="display:none;"><span class="meta-text">{{ song.lyricist }}</span></td>
+
+                <!-- Col 6: Source (Hidden by default) -->
+                <td style="display:none;">
+                    <span class="meta-text">{{ song.youtube_channel | default('Unknown') }}</span><br>
+                    <span class="tag">{{ song.resolution | default('Unknown') }}</span>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
+<!-- HTML5 Native Modal for Video Playback -->
+<dialog id="videoModal">
+    <div class="modal-header">
+        <button class="close-btn" onclick="closePlayer()">✕ Close Video</button>
+    </div>
+    <div class="video-container">
+        <iframe id="ytPlayer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</dialog>
+
+<script>
+    // --- 1. GLOBAL SEARCH FILTER ---
+    function filterTable() {
+        let input = document.getElementById("searchInput").value.toUpperCase();
+        let tr = document.getElementById("songTable").getElementsByTagName("tr");
+
+        for (let i = 1; i < tr.length; i++) { 
+            let rowText = tr[i].textContent || tr[i].innerText;
+            tr[i].style.display = rowText.toUpperCase().indexOf(input) > -1 ? "" : "none";
+        }
+    }
+
+    // --- 2. COLUMN VISIBILITY TOGGLE ---
+    function toggleDropdown() {
+        document.getElementById("columnMenu").classList.toggle("show");
+    }
+
+    // Close dropdown if clicked outside
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn') && !event.target.closest('.dropdown-content')) {
+            let dropdowns = document.getElementsByClassName("dropdown-content");
+            for (let i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].classList.contains('show')) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+    }
+
+    function toggleColumn(colIdx) {
+        const table = document.getElementById("songTable");
+        const checkbox = event.target;
+        const displayState = checkbox.checked ? "" : "none";
+        
+        // Update Header
+        table.rows[0].cells[colIdx].style.display = displayState;
+        
+        // Update all data rows
+        for (let i = 1; i < table.rows.length; i++) {
+            table.rows[i].cells[colIdx].style.display = displayState;
+        }
+    }
+
+    // --- 3. SORTING LOGIC ---
+    let sortCol = -1;
+    let sortAsc = true;
+    
+    function sortList(colIdx) {
+        let table = document.getElementById("songTable");
+        let tbody = table.tBodies[0];
+        let rows = Array.from(tbody.querySelectorAll("tr"));
+        
+        sortAsc = (sortCol === colIdx) ? !sortAsc : true;
+        sortCol = colIdx;
+
+        rows.sort((a, b) => {
+            let valA = a.cells[colIdx].innerText.trim();
+            let valB = b.cells[colIdx].innerText.trim();
+            return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        });
+        rows.forEach(row => tbody.appendChild(row));
+    }
+
+    // --- 4. VIDEO MODAL LOGIC ---
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('ytPlayer');
+
+    function openPlayer(videoId) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        modal.showModal();
+    }
+
+    function closePlayer() {
+        modal.close();
+        iframe.src = ""; 
+    }
+
+    modal.addEventListener('click', (e) => {
+        const rect = modal.getBoundingClientRect();
+        if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+            closePlayer();
+        }
+    });
+</script>
 
 </body>
 </html>

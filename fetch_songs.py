@@ -1,7 +1,3 @@
-# export GEMINI_API_KEY="your_api_key_here"
-# python fetch_songs.py
-# process list of urls in urls.txt
-
 import os
 import time
 import re
@@ -66,7 +62,7 @@ def main():
     skipped_count = 0
     error_count = 0
 
-    # --- NEW: Define the strict JSON Schema for the AI to follow ---
+    # --- THE UPDATED JSON SCHEMA ---
     song_schema = {
         "type": "OBJECT",
         "properties": {
@@ -74,8 +70,21 @@ def main():
             "movie": {"type": "STRING"},
             "year": {"type": "STRING"}, 
             "singers": {"type": "STRING"},
-            "lyricist": {"type": "STRING"},
+            "actors": {
+                "type": "ARRAY",
+                "items": {"type": "STRING"},
+                "description": "List of actors appearing in the video"
+            },
             "composer": {"type": "STRING"},
+            "lyricist": {"type": "STRING"},
+            "youtube_channel": {
+                "type": "STRING",
+                "description": "The name of the YouTube channel hosting the video, if identifiable."
+            },
+            "resolution": {
+                "type": "STRING",
+                "description": "The video resolution (e.g., '4K', '1080p', 'HD', 'SD'). Infer from title if possible, else output 'Unknown'."
+            },
             "theme": {"type": "STRING"},
             "lyrics": {
                 "type": "ARRAY",
@@ -102,7 +111,7 @@ def main():
                 }
             }
         },
-        "required": ["title", "movie", "year", "singers", "lyricist", "composer", "theme", "lyrics", "vocabulary"]
+        "required": ["title", "movie", "year", "singers", "actors", "composer", "lyricist", "youtube_channel", "resolution", "theme", "lyrics", "vocabulary"]
     }
 
     for index, url in enumerate(urls, 1):
@@ -121,11 +130,10 @@ def main():
             print(f"  ↳ Found Title: {video_title}")
             full_prompt += f"\n**VIDEO TITLE:** {video_title}\n(Please base the transliteration strictly on this song title)."
         
-        # --- NEW: Force the model to return JSON matching our schema ---
         config = types.GenerateContentConfig(
             response_mime_type="application/json",
             response_schema=song_schema,
-            temperature=0.2 # Lower temperature makes formatting more reliable
+            temperature=0.2
         )
         
         max_retries = 3
@@ -159,18 +167,13 @@ def main():
             continue
 
         try:
-            # Parse the guaranteed-valid JSON
             parsed_data = json.loads(response_text)
-            
-            # Hardcode the youtube_id from our exact extraction
             parsed_data['youtube_id'] = yt_id
             
             title = parsed_data.get('title', f'song_{yt_id or index}')
             safe_title = re.sub(r'[^a-z0-9]+', '_', title.lower()).strip('_')
             filename = f"data/{safe_title}.yaml"
             
-            # Convert the valid JSON object back into a beautiful YAML file!
-            # allow_unicode=True ensures Devanagari characters render correctly.
             with open(filename, 'w', encoding='utf-8') as f:
                 yaml.dump(parsed_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
                 
@@ -201,4 +204,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
