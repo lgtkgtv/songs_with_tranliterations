@@ -31,3 +31,29 @@ vocabulary:
  
 **TARGET URL:** [INSERT URL HERE]
 
+
+---
+
+---
+
+### 2. Automating with a CLI or API
+
+For example, a bash script using a generic AI CLI might look like this:
+
+```bash
+#!/bin/bash
+# Assuming urls.txt contains one YouTube URL per line
+
+while IFS= read -r url; do
+  echo "Processing $url..."
+  
+  # Pass prompt.txt and the URL to the CLI, output to a new yaml file
+  # Replace 'agy' with your actual CLI command syntax
+  agy prompt --file prompt.txt "URL: $url" > "data/$(date +%s).yaml"
+  
+  sleep 5 # Pause to avoid hitting rate limits
+done < urls.txt
+```
+
+
+
