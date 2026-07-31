@@ -4,6 +4,7 @@ import re
 import yaml
 import json
 import urllib.request
+import argparse
 from google import genai
 from google.genai import types
 from google.genai.errors import APIError
@@ -42,7 +43,37 @@ def get_youtube_title(url):
         print(f"  ⚠️ Warning: Could not fetch video title directly ({e})")
     return None
 
+
+def check_api_health(client, debug=False):
+    """Sends a minimal request to test if quota is available before starting the batch."""
+    print("🩺 Running pre-flight API health check...")
+    try:
+        # A tiny request that consumes almost zero tokens
+        client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents='ping'
+        )
+        print("  ✓ API is healthy and quota is available.\n")
+        return True
+    except APIError as e:
+        err_msg = str(e).lower()
+        if "429" in err_msg or "resource_exhausted" in err_msg or "quota" in err_msg:
+            print("  🚨 PRE-FLIGHT FAILED: You are currently out of quota. Try again tomorrow.")
+            return False
+        else:
+            print(f"  ⚠️ Pre-flight check failed with unknown error: {e}")
+            return False
+    except Exception as e:
+        print(f"  ⚠️ Pre-flight check failed: {e}")
+        return False
+
+
+
 def main():
+    parser = argparse.ArgumentParser(description="Fetch and transliterate song lyrics using Gemini API.")
+    parser.add_argument('--debug', action='store_true', help="Enable verbose debug logging and error dumping.")
+    args = parser.parse_args()
+
     os.makedirs('data', exist_ok=True)
     
     if not os.path.exists('prompt.txt') or not os.path.exists('urls.txt'):
@@ -57,12 +88,23 @@ def main():
         
     processed_ids = get_processed_youtube_ids('data')
     print(f"Loaded {len(processed_ids)} previously processed song(s).")
+
+    # --- NEW: Run the pre-flight check ---
+    if not check_api_health(client, args.debug):
+        print("🛑 Aborting script. Fix API issues before running the batch.")
+        return
+    
+    if args.debug:
+        print("🔍 DEBUG MODE ENABLED: Detailed API errors will be logged.")
     
     added_count = 0
     skipped_count = 0
     error_count = 0
+    
+    # --- NEW: Global Quota Tracking ---
+    daily_quota_hit = False
+    consecutive_429_errors = 0 
 
-    # --- THE UPDATED JSON SCHEMA ---
     song_schema = {
         "type": "OBJECT",
         "properties": {
@@ -77,25 +119,31 @@ def main():
             },
             "composer": {"type": "STRING"},
             "lyricist": {"type": "STRING"},
-            "youtube_channel": {
-                "type": "STRING",
-                "description": "The name of the YouTube channel hosting the video, if identifiable."
-            },
-            "resolution": {
-                "type": "STRING",
-                "description": "The video resolution (e.g., '4K', '1080p', 'HD', 'SD'). Infer from title if possible, else output 'Unknown'."
-            },
+            "youtube_channel": {"type": "STRING"},
+            "resolution": {"type": "STRING"},
             "theme": {"type": "STRING"},
             "lyrics": {
                 "type": "ARRAY",
+                "description": "Group the lyrics logically into stanzas/sections (e.g., Verse, Chorus).",
                 "items": {
                     "type": "OBJECT",
                     "properties": {
-                        "roman": {"type": "STRING"},
-                        "devanagari": {"type": "STRING"},
-                        "english": {"type": "STRING"}
+                        "section_name": {"type": "STRING"},
+                        "lines": {
+                            "type": "ARRAY",
+                            "items": {
+                                "type": "OBJECT",
+                                "properties": {
+                                    "roman": {"type": "STRING"},
+                                    "devanagari": {"type": "STRING"},
+                                    "english": {"type": "STRING"},
+                                    "is_repeat": {"type": "BOOLEAN"}
+                                },
+                                "required": ["roman", "devanagari", "english", "is_repeat"]
+                            }
+                        }
                     },
-                    "required": ["roman", "devanagari", "english"]
+                    "required": ["section_name", "lines"]
                 }
             },
             "vocabulary": {
@@ -115,6 +163,9 @@ def main():
     }
 
     for index, url in enumerate(urls, 1):
+        if daily_quota_hit:
+            break
+
         yt_id = extract_youtube_id(url)
         
         if yt_id and yt_id in processed_ids:
@@ -125,7 +176,13 @@ def main():
         print(f"[{index}/{len(urls)}] 🔄 Processing: {url}")
         
         video_title = get_youtube_title(url)
-        full_prompt = f"{base_prompt}\n\n**TARGET URL:** {url}"
+        semantic_instruction = (
+            "\n\n**IMPORTANT INSTRUCTION FOR LYRICS STRUCTURE:**\n"
+            "Analyze the song structure. Group lines into distinct sections (e.g., 'Chorus', 'Verse 1', 'Bridge'). "
+            "If a line repeats a previous line verbatim (like a recurring chorus), you must set 'is_repeat' to true for that line."
+        )
+        
+        full_prompt = f"{base_prompt}{semantic_instruction}\n\n**TARGET URL:** {url}"
         if video_title:
             print(f"  ↳ Found Title: {video_title}")
             full_prompt += f"\n**VIDEO TITLE:** {video_title}\n(Please base the transliteration strictly on this song title)."
@@ -133,36 +190,63 @@ def main():
         config = types.GenerateContentConfig(
             response_mime_type="application/json",
             response_schema=song_schema,
-            temperature=0.2
+            temperature=0.2,
+            max_output_tokens=8192
         )
         
-        max_retries = 3
+        max_retries = 4
         response_text = None
         
         for attempt in range(1, max_retries + 1):
             try:
+                if args.debug:
+                    print(f"  [DEBUG] Sending request to Gemini API (Attempt {attempt})...")
+                
                 response = client.models.generate_content(
                     model='gemini-2.5-flash',
                     contents=full_prompt,
                     config=config
                 )
                 response_text = response.text
+                
+                # --- NEW: Reset quota tracker on success ---
+                consecutive_429_errors = 0 
                 break
+                
             except APIError as e:
-                err_msg = str(e)
-                if "429" in err_msg or "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
+                err_msg = str(e).lower()
+                if args.debug:
+                    print(f"  [DEBUG] Raw API Error Dump: {err_msg}")
+                    
+                if "429" in err_msg or "resource_exhausted" in err_msg or "quota" in err_msg:
+                    consecutive_429_errors += 1
+                    
+                    # --- NEW: Hard halt condition ---
+                    if consecutive_429_errors >= 3:
+                        print(f"  🚨 3 consecutive quota errors detected. Halting script to prevent API penalties.")
+                        daily_quota_hit = True
+                        break
+                        
+                    wait_seconds = 60 * (2 ** (attempt - 1))
+                    print(f"  ⚠️ Quota limit reached. Applying exponential backoff. Waiting {wait_seconds}s... (Consecutive 429s: {consecutive_429_errors}/3)")
+                    time.sleep(wait_seconds)
+                elif "503" in err_msg or "504" in err_msg or "500" in err_msg:
                     wait_seconds = attempt * 15
-                    print(f"  ⚠️ Quota limit reached. Retrying in {wait_seconds}s... (Attempt {attempt}/{max_retries})")
+                    print(f"  ⚠️ Server busy/timeout. Retrying in {wait_seconds}s... (Attempt {attempt}/{max_retries})")
                     time.sleep(wait_seconds)
                 else:
-                    print(f"  ✗ API Error: {e}")
+                    print(f"  ✗ Fatal API Error.")
                     break
             except Exception as e:
                 print(f"  ✗ Unexpected Error: {e}")
-                break
+                time.sleep(attempt * 5)
+
+        if daily_quota_hit:
+            print("🛑 Batch process aborted due to assumed daily quota exhaustion.")
+            break
 
         if not response_text:
-            print(f"  ✗ Failed to retrieve response for {url}")
+            print(f"  ✗ Failed to retrieve response for {url} after {max_retries} attempts.")
             error_count += 1
             continue
 
@@ -182,11 +266,16 @@ def main():
             if yt_id:
                 processed_ids.add(yt_id)
                 
-            time.sleep(4)
+            time.sleep(5)
 
         except Exception as e:
             print(f"  ✗ Failed to parse JSON or save YAML for {url}: {e}")
             error_count += 1
+            if args.debug and response_text:
+                debug_file = f"debug_error_{yt_id}.log"
+                with open(debug_file, 'w', encoding='utf-8') as f:
+                    f.write(response_text)
+                print(f"  [DEBUG] Dumped the raw broken AI response to {debug_file} for inspection.")
 
     print("\n" + "=" * 55)
     print("📊 BATCH PROCESSING SUMMARY")
@@ -195,12 +284,6 @@ def main():
     print(f"   • Skipped (Duplicates): {skipped_count}")
     print(f"   • Errors Encountered:   {error_count}")
     print("=" * 55)
-
-    if added_count > 0:
-        print("\n🚀 RE-DEPLOYMENT INSTRUCTIONS:")
-        print("   git add data/")
-        print(f'   git commit -m "Add {added_count} new song transliteration(s)"')
-        print("   git push\n")
 
 if __name__ == "__main__":
     main()
