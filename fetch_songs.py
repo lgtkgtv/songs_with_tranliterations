@@ -6,19 +6,19 @@ import os
 import time
 import re
 import yaml
+import json
 import urllib.request
 from google import genai
+from google.genai import types
 from google.genai.errors import APIError
 
 client = genai.Client()
 
 def extract_youtube_id(url):
-    """Extracts the 11-character YouTube video ID."""
     match = re.search(r'(?:v=|\/)([a-zA-Z0-9_-]{11})', url)
     return match.group(1) if match else None
 
 def get_processed_youtube_ids(data_dir='data'):
-    """Scans existing YAML files in data/ to build a set of already processed video IDs."""
     processed_ids = set()
     if not os.path.exists(data_dir):
         return processed_ids
@@ -36,25 +36,15 @@ def get_processed_youtube_ids(data_dir='data'):
     return processed_ids
 
 def get_youtube_title(url):
-    """Fetches the webpage and extracts the <title> tag to guide the AI."""
     try:
-        # We use a standard browser User-Agent so YouTube doesn't block the request
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
         html = urllib.request.urlopen(req, timeout=5).read().decode('utf-8')
         match = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
         if match:
-            # Clean up the standard " - YouTube" suffix
             return match.group(1).replace(' - YouTube', '').strip()
     except Exception as e:
         print(f"  ⚠️ Warning: Could not fetch video title directly ({e})")
     return None
-
-def extract_yaml(text):
-    """Strips markdown block formatting if present."""
-    match = re.search(r'```yaml\n(.*?)\n```', text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-    return text.strip()
 
 def main():
     os.makedirs('data', exist_ok=True)
@@ -71,11 +61,49 @@ def main():
         
     processed_ids = get_processed_youtube_ids('data')
     print(f"Loaded {len(processed_ids)} previously processed song(s).")
-    print(f"Found {len(urls)} URL(s) in 'urls.txt'.\n")
     
     added_count = 0
     skipped_count = 0
     error_count = 0
+
+    # --- NEW: Define the strict JSON Schema for the AI to follow ---
+    song_schema = {
+        "type": "OBJECT",
+        "properties": {
+            "title": {"type": "STRING"},
+            "movie": {"type": "STRING"},
+            "year": {"type": "STRING"}, 
+            "singers": {"type": "STRING"},
+            "lyricist": {"type": "STRING"},
+            "composer": {"type": "STRING"},
+            "theme": {"type": "STRING"},
+            "lyrics": {
+                "type": "ARRAY",
+                "items": {
+                    "type": "OBJECT",
+                    "properties": {
+                        "roman": {"type": "STRING"},
+                        "devanagari": {"type": "STRING"},
+                        "english": {"type": "STRING"}
+                    },
+                    "required": ["roman", "devanagari", "english"]
+                }
+            },
+            "vocabulary": {
+                "type": "ARRAY",
+                "items": {
+                    "type": "OBJECT",
+                    "properties": {
+                        "word": {"type": "STRING"},
+                        "pronunciation": {"type": "STRING"},
+                        "meaning": {"type": "STRING"}
+                    },
+                    "required": ["word", "pronunciation", "meaning"]
+                }
+            }
+        },
+        "required": ["title", "movie", "year", "singers", "lyricist", "composer", "theme", "lyrics", "vocabulary"]
+    }
 
     for index, url in enumerate(urls, 1):
         yt_id = extract_youtube_id(url)
@@ -87,12 +115,18 @@ def main():
 
         print(f"[{index}/{len(urls)}] 🔄 Processing: {url}")
         
-        # --- NEW: Fetch the title and inject it into the prompt ---
         video_title = get_youtube_title(url)
         full_prompt = f"{base_prompt}\n\n**TARGET URL:** {url}"
         if video_title:
             print(f"  ↳ Found Title: {video_title}")
             full_prompt += f"\n**VIDEO TITLE:** {video_title}\n(Please base the transliteration strictly on this song title)."
+        
+        # --- NEW: Force the model to return JSON matching our schema ---
+        config = types.GenerateContentConfig(
+            response_mime_type="application/json",
+            response_schema=song_schema,
+            temperature=0.2 # Lower temperature makes formatting more reliable
+        )
         
         max_retries = 3
         response_text = None
@@ -102,6 +136,7 @@ def main():
                 response = client.models.generate_content(
                     model='gemini-2.5-flash',
                     contents=full_prompt,
+                    config=config
                 )
                 response_text = response.text
                 break
@@ -124,18 +159,20 @@ def main():
             continue
 
         try:
-            raw_yaml = extract_yaml(response_text)
-            parsed_data = yaml.safe_load(raw_yaml)
+            # Parse the guaranteed-valid JSON
+            parsed_data = json.loads(response_text)
             
-            if not isinstance(parsed_data, dict) or 'title' not in parsed_data:
-                raise ValueError("Response does not contain valid YAML schema.")
-                
+            # Hardcode the youtube_id from our exact extraction
+            parsed_data['youtube_id'] = yt_id
+            
             title = parsed_data.get('title', f'song_{yt_id or index}')
             safe_title = re.sub(r'[^a-z0-9]+', '_', title.lower()).strip('_')
             filename = f"data/{safe_title}.yaml"
             
+            # Convert the valid JSON object back into a beautiful YAML file!
+            # allow_unicode=True ensures Devanagari characters render correctly.
             with open(filename, 'w', encoding='utf-8') as f:
-                f.write(raw_yaml)
+                yaml.dump(parsed_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
                 
             print(f"  ✓ Saved: {filename}")
             added_count += 1
@@ -145,7 +182,7 @@ def main():
             time.sleep(4)
 
         except Exception as e:
-            print(f"  ✗ Failed to parse or save YAML for {url}: {e}")
+            print(f"  ✗ Failed to parse JSON or save YAML for {url}: {e}")
             error_count += 1
 
     print("\n" + "=" * 55)
@@ -164,5 +201,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
     
