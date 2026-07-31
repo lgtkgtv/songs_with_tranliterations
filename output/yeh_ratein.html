@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeh Ratein Yeh Mausam | Song Translation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* (Keep all the CSS from the previous HTML file here) */
+        body { font-family: 'Inter', sans-serif; background-color: #f7fafc; color: #2d3748; line-height: 1.6; margin: 0; padding: 2rem 1rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header-card { background: #ffffff; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 2rem; border-top: 5px solid #3182ce; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2.5rem; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; background: #edf2f7; padding: 1rem; border-radius: 8px; }
+        .meta-item strong { display: block; font-size: 0.85rem; text-transform: uppercase; color: #4a5568; }
+        .youtube-btn { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background-color: #ff0000; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; }
+        .theme-section { margin-bottom: 3rem; font-size: 1.1rem; color: #4a5568; border-left: 4px solid #3182ce; padding-left: 1.5rem; }
+        .lyrics-header { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 1rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; margin-bottom: 1rem; color: #4a5568; text-transform: uppercase; font-size: 0.9rem; }
+        .lyric-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 1.5rem 1rem; background: #ffffff; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .col-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.15rem; color: #2c5282; }
+        .col-english { font-style: italic; color: #2b6cb0; }
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .vocab-card { background: #ffffff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #48bb78; }
+        .vocab-word { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .vocab-pronounce { color: #4a5568; font-family: monospace; background: #edf2f7; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9rem; }
+        .vocab-meaning { margin-top: 0.75rem; font-weight: 600; }
+        @media (max-width: 900px) {
+            .lyrics-header { display: none; }
+            .lyric-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem; }
+            .col-devanagari { font-size: 1.3rem; margin-top: 0.5rem; }
+            .col-english { margin-top: 0.5rem; border-top: 1px dashed #e2e8f0; padding-top: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header-card">
+        <h1>Yeh Ratein Yeh Mausam</h1>
+        <div class="theme-section">
+            <p>This classic duet is a quintessential romantic piece that captures the essence of new love blossoming in harmony with nature.</p>
+        </div>
+        
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Movie</strong> Dilli Ka Thug</div>
+            <div class="meta-item"><strong>Year</strong> 1958</div>
+            <div class="meta-item"><strong>Singers</strong> Kishore Kumar, Asha Bhosle</div>
+            <div class="meta-item"><strong>Lyricist</strong> Shailendra</div>
+            <div class="meta-item"><strong>Composer</strong> Ravi</div>
+        </div>
+        <a href="https://www.youtube.com/watch?v=zMGYCKr5trw" target="_blank" class="youtube-btn">▶ Watch on YouTube</a>
+    </header>
+
+    <section class="lyrics-container">
+        <h2>Lyrics & Translation</h2>
+        <div class="lyrics-header">
+            <div>Transliteration</div>
+            <div>Devanagari</div>
+            <div>English Translation</div>
+        </div>
+
+        <!-- This loops through every lyric item in your YAML file -->
+        
+        <div class="lyric-row">
+            <div class="col-roman">Yeh ratein, yeh mausam, nadi ka kinara, yeh chanchal hawa</div>
+            <div class="col-devanagari">ये रातें, ये मौसम, नदी का किनारा, ये चंचल हवा</div>
+            <div class="col-english">These nights, this weather, the riverbank, this playful breeze.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kaha do dilon ne, ki milkar kabhi hum na honge juda</div>
+            <div class="col-devanagari">कहा दो दिलों ने, कि मिलकर कभी हम ना होंगे जुदा</div>
+            <div class="col-english">Two hearts have declared that, having met, we shall never part.</div>
+        </div>
+        
+    </section>
+
+    <section>
+        <h2>Pronunciation & Meaning</h2>
+        <div class="vocab-grid">
+            <!-- This loops through every vocabulary item in your YAML file -->
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Chanchal</div>
+                <div class="vocab-pronounce">Chun-chull (चन-चल)</div>
+                <div class="vocab-meaning">Playful / Restless</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Juda</div>
+                <div class="vocab-pronounce">Ju-daa (जु-दा)</div>
+                <div class="vocab-meaning">Separated / Apart</div>
+            </div>
+            
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
