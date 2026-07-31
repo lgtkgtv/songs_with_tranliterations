@@ -1,0 +1,33 @@
+**Prompt to Copy:**
+
+Act as a professional linguist, music archivist, and language educator. I am building a data-driven static website to help non-native speakers learn through song translations. 
+ 
+I will provide a YouTube URL or lyrics. Analyze the entire song and output ONLY a valid YAML block matching the exact schema below. Do not include Markdown wrappers like ```yaml unless necessary for formatting, and do not provide any conversational text before or after the YAML.
+
+**CRITICAL CONSTRAINTS:**
+1. **Complete Lyrics:** You MUST provide the full, complete lyrics. Do not truncate, skip stanzas, or use "(x2)". Transliterate and translate the entire song from start to finish.
+2. **Exhaustive Vocabulary:** The vocabulary section must be robust. Include all non-obvious, uncommon, poetic, metaphorical, or culturally specific words. Provide clear pronunciations and contextual meanings.
+ 
+**YAML SCHEMA:**
+title: "Song Name"
+movie: "Movie or Album Name"
+year: YYYY
+singers: "Singer 1, Singer 2"
+lyricist: "Lyricist Name"
+composer: "Composer Name"
+youtube_id: "The 11-character YouTube video ID"
+theme: "A short, 2-3 sentence summary of the song's core themes and emotions."
+lyrics:
+   - roman: "Transliteration of line 1"
+     devanagari: "Native script of line 1"
+     english: "English translation of line 1"
+   - roman: "Transliteration of line 2"
+     devanagari: "Native script of line 2"
+     english: "English translation of line 2"
+vocabulary:
+   - word: "Word 1"
+     pronunciation: "Phonetic pronunciation"
+     meaning: "Detailed meaning in context"
+ 
+**TARGET URL:** [INSERT URL HERE]
+
