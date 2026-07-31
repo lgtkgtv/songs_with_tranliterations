@@ -1,38 +1,155 @@
-<style>
-    /* Add this to the <style> block in song_template.html */
-    .hero-banner { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
-    .hero-thumb { position: relative; width: 280px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-shrink: 0; }
-    .hero-thumb img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
-    .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: background 0.2s; text-decoration: none; }
-    .hero-overlay:hover { background: rgba(0,0,0,0.4); }
-    .hero-play { background: #ef4444; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; padding-left: 4px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Song Translation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --border: #e2e8f0;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+        }
 
-<!-- Inside the header-card -->
-<header class="header-card">
-    <div class="hero-banner">
-        <a href="https://www.youtube.com/watch?v={{ youtube_id }}" target="_blank" class="hero-thumb">
-            <img src="https://i.ytimg.com/vi/{{ youtube_id }}/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/{{ youtube_id }}/hqdefault.jpg'" alt="Play Video">
-            <div class="hero-overlay">
-                <div class="hero-play">▶</div>
-            </div>
-        </a>
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-page); color: var(--text-main); line-height: 1.6; margin: 0; padding: 1.5rem 1rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
         
-        <div>
-            <h1>{{ title }}</h1>
-            <div class="theme-section">
-                <p>{{ theme }}</p>
+        /* Navbar / Back Button */
+        .nav-bar { margin-bottom: 1.5rem; }
+        .back-link { text-decoration: none; color: var(--text-muted); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+        .back-link:hover { color: var(--primary); }
+
+        /* Header & Hero */
+        .header-card { background: var(--bg-card); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; border-top: 5px solid var(--primary); }
+        .hero-banner { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem; }
+        
+        /* Thumbnail Styles */
+        .hero-thumb { position: relative; width: 320px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.15); flex-shrink: 0; display: block; }
+        .hero-thumb img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+        .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .hero-thumb:hover .hero-overlay { background: rgba(0,0,0,0.4); }
+        .hero-play { background: #ef4444; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; padding-left: 5px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+
+        .hero-text { flex: 1; min-width: 300px; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2.2rem; color: #1e293b; line-height: 1.2; }
+        .theme-section { font-size: 1.05rem; color: var(--text-muted); border-left: 4px solid var(--secondary); padding-left: 1rem; margin-top: 1rem; }
+        
+        /* Metadata Grid */
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; background: var(--bg-page); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+        .meta-item { font-size: 0.95rem; }
+        .meta-item strong { display: block; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; letter-spacing: 0.05em; }
+        .tag-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+        .tag { background: #e2e8f0; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; color: #334155; }
+
+        /* Lyrics Section */
+        h2 { font-size: 1.5rem; color: #1e293b; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        .lyrics-header { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 0 1rem 0.5rem 1rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        
+        .lyric-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 1.5rem 1rem; background: var(--bg-card); border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid var(--border); transition: transform 0.1s; }
+        .lyric-row:hover { transform: scale(1.01); border-color: #cbd5e1; }
+        .col-roman { font-weight: 500; color: #334155; }
+        .col-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.25rem; color: #1d4ed8; }
+        .col-english { font-style: italic; color: #0f766e; }
+
+        /* Vocabulary Section */
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .vocab-card { background: var(--bg-card); padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-left: 4px solid #10b981; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .vocab-word { font-weight: 700; font-size: 1.25rem; color: #064e3b; margin-bottom: 0.5rem; }
+        .vocab-pronounce { display: inline-block; color: #475569; font-family: monospace; background: #f1f5f9; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.9rem; margin-bottom: 0.75rem; }
+        .vocab-meaning { font-size: 0.95rem; color: #334155; }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 900px) {
+            .hero-banner { flex-direction: column; }
+            .hero-thumb { width: 100%; max-width: 500px; margin: 0 auto; }
+            .lyrics-header { display: none; }
+            .lyric-row { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.25rem; }
+            .col-devanagari { font-size: 1.4rem; padding: 0.5rem 0; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="index.html" class="back-link">← Back to Archive</a>
+    </div>
+
+    <header class="header-card">
+        <div class="hero-banner">
+            <a href="https://www.youtube.com/watch?v={{ youtube_id }}" target="_blank" class="hero-thumb">
+                <img src="https://i.ytimg.com/vi/{{ youtube_id }}/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/{{ youtube_id }}/hqdefault.jpg'" alt="Play Video">
+                <div class="hero-overlay">
+                    <div class="hero-play">▶</div>
+                </div>
+            </a>
+            
+            <div class="hero-text">
+                <h1>{{ title }}</h1>
+                <div class="theme-section">
+                    <p>{{ theme }}</p>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="meta-grid">
-        <!-- Keep your existing meta-grid items here -->
-        <div class="meta-item"><strong>Movie</strong> {{ movie }}</div>
-        <div class="meta-item"><strong>Year</strong> {{ year }}</div>
-        <div class="meta-item"><strong>Singers</strong> {{ singers }}</div>
-        <div class="meta-item"><strong>Lyricist</strong> {{ lyricist }}</div>
-        <div class="meta-item"><strong>Composer</strong> {{ composer }}</div>
-    </div>
-</header>
+        
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Movie / Album</strong> {{ movie }} ({{ year }})</div>
+            <div class="meta-item"><strong>Singers</strong> {{ singers }}</div>
+            <div class="meta-item">
+                <strong>Actors</strong>
+                <div class="tag-list">
+                    {% if actors %}
+                        {% for actor in actors %}<span class="tag">{{ actor }}</span>{% endfor %}
+                    {% else %}
+                        <span class="tag">Unknown</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="meta-item"><strong>Composer</strong> {{ composer }}</div>
+            <div class="meta-item"><strong>Lyricist</strong> {{ lyricist }}</div>
+            <div class="meta-item">
+                <strong>Source</strong> 
+                {{ youtube_channel | default('Unknown') }} 
+                <span class="tag" style="margin-left: 4px;">{{ resolution | default('Unknown') }}</span>
+            </div>
+        </div>
+    </header>
 
+    <section>
+        <h2>Lyrics & Translation</h2>
+        <div class="lyrics-header">
+            <div>Transliteration</div>
+            <div>Native Script</div>
+            <div>English Translation</div>
+        </div>
+
+        {% for line in lyrics %}
+        <div class="lyric-row">
+            <div class="col-roman">{{ line.roman }}</div>
+            <div class="col-devanagari">{{ line.devanagari }}</div>
+            <div class="col-english">{{ line.english }}</div>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Vocabulary Guide</h2>
+        <div class="vocab-grid">
+            {% for v in vocabulary %}
+            <div class="vocab-card">
+                <div class="vocab-word">{{ v.word }}</div>
+                <div class="vocab-pronounce">{{ v.pronunciation }}</div>
+                <div class="vocab-meaning">{{ v.meaning }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
