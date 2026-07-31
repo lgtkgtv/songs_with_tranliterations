@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kora Kagaz Tha Yeh Man Mera | Song Translation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --border: #e2e8f0;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-page); color: var(--text-main); line-height: 1.6; margin: 0; padding: 1.5rem 1rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* Navbar / Back Button */
+        .nav-bar { margin-bottom: 1.5rem; }
+        .back-link { text-decoration: none; color: var(--text-muted); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+        .back-link:hover { color: var(--primary); }
+
+        /* Header & Hero */
+        .header-card { background: var(--bg-card); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; border-top: 5px solid var(--primary); }
+        .hero-banner { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem; }
+        
+        /* Thumbnail Styles */
+        .hero-thumb { position: relative; width: 320px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.15); flex-shrink: 0; display: block; }
+        .hero-thumb img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+        .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .hero-thumb:hover .hero-overlay { background: rgba(0,0,0,0.4); }
+        .hero-play { background: #ef4444; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; padding-left: 5px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+
+        .hero-text { flex: 1; min-width: 300px; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2.2rem; color: #1e293b; line-height: 1.2; }
+        .theme-section { font-size: 1.05rem; color: var(--text-muted); border-left: 4px solid var(--secondary); padding-left: 1rem; margin-top: 1rem; }
+        
+        /* Metadata Grid */
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; background: var(--bg-page); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+        .meta-item { font-size: 0.95rem; }
+        .meta-item strong { display: block; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; letter-spacing: 0.05em; }
+        .tag-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+        .tag { background: #e2e8f0; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; color: #334155; }
+
+        /* Lyrics Section */
+        h2 { font-size: 1.5rem; color: #1e293b; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        .lyrics-header { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 0 1rem 0.5rem 1rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        
+        .lyric-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 1.5rem 1rem; background: var(--bg-card); border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid var(--border); transition: transform 0.1s; }
+        .lyric-row:hover { transform: scale(1.01); border-color: #cbd5e1; }
+        .col-roman { font-weight: 500; color: #334155; }
+        .col-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.25rem; color: #1d4ed8; }
+        .col-english { font-style: italic; color: #0f766e; }
+
+        /* Vocabulary Section */
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .vocab-card { background: var(--bg-card); padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-left: 4px solid #10b981; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .vocab-word { font-weight: 700; font-size: 1.25rem; color: #064e3b; margin-bottom: 0.5rem; }
+        .vocab-pronounce { display: inline-block; color: #475569; font-family: monospace; background: #f1f5f9; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.9rem; margin-bottom: 0.75rem; }
+        .vocab-meaning { font-size: 0.95rem; color: #334155; }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 900px) {
+            .hero-banner { flex-direction: column; }
+            .hero-thumb { width: 100%; max-width: 500px; margin: 0 auto; }
+            .lyrics-header { display: none; }
+            .lyric-row { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.25rem; }
+            .col-devanagari { font-size: 1.4rem; padding: 0.5rem 0; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="index.html" class="back-link">← Back to Archive</a>
+    </div>
+
+    <header class="header-card">
+        <div class="hero-banner">
+            <a href="https://www.youtube.com/watch?v=j7TM2ccOGbU" target="_blank" class="hero-thumb">
+                <img src="https://i.ytimg.com/vi/j7TM2ccOGbU/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/j7TM2ccOGbU/hqdefault.jpg'" alt="Play Video">
+                <div class="hero-overlay">
+                    <div class="hero-play">▶</div>
+                </div>
+            </a>
+            
+            <div class="hero-text">
+                <h1>Kora Kagaz Tha Yeh Man Mera</h1>
+                <div class="theme-section">
+                    <p>This song expresses the profound transformation a person's life undergoes when they fall in love. The heart, once a blank slate, is now filled with the beloved's name and presence, bringing joy and meaning to a previously desolate existence.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Movie / Album</strong> Aradhana (1969)</div>
+            <div class="meta-item"><strong>Singers</strong> Lata Mangeshkar, Kishore Kumar</div>
+            <div class="meta-item">
+                <strong>Actors</strong>
+                <div class="tag-list">
+                    
+                        <span class="tag">Rajesh Khanna</span><span class="tag">Sharmila Tagore</span>
+                    
+                </div>
+            </div>
+            <div class="meta-item"><strong>Composer</strong> S.D. Burman</div>
+            <div class="meta-item"><strong>Lyricist</strong> Anand Bakshi</div>
+            <div class="meta-item">
+                <strong>Source</strong> 
+                Saregama Music 
+                <span class="tag" style="margin-left: 4px;">4K</span>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <h2>Lyrics & Translation</h2>
+        <div class="lyrics-header">
+            <div>Transliteration</div>
+            <div>Native Script</div>
+            <div>English Translation</div>
+        </div>
+
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Soona aangan tha jeevan mera</div>
+            <div class="col-devanagari">सूना आँगन था जीवन मेरा</div>
+            <div class="col-english">My life was a desolate courtyard,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Bas gaya pyar is mein tera</div>
+            <div class="col-devanagari">बस गया प्यार इस में तेरा</div>
+            <div class="col-english">Your love has settled in it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toot na jaaye sapne main darta hoon</div>
+            <div class="col-devanagari">टूटना जाए सपने मैं डरता हूँ</div>
+            <div class="col-english">I fear that dreams might break,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Din rain bas yeh socha karta hoon</div>
+            <div class="col-devanagari">दिन रैन बस ये सोचा करता हूँ</div>
+            <div class="col-english">Day and night, I just keep thinking this.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toot na jaaye sapne main darta hoon</div>
+            <div class="col-devanagari">टूटना जाए सपने मैं डरता हूँ</div>
+            <div class="col-english">I fear that dreams might break,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Din rain bas yeh socha karta hoon</div>
+            <div class="col-devanagari">दिन रैन बस ये सोचा करता हूँ</div>
+            <div class="col-english">Day and night, I just keep thinking this.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Nainon mein jab se basa hai tu</div>
+            <div class="col-devanagari">नैनों में जब से बसा है तू</div>
+            <div class="col-english">Ever since you've resided in my eyes,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tab se main khoya khoya sa rehta hoon</div>
+            <div class="col-devanagari">तब से मैं खोया खोया सा रहता हूँ</div>
+            <div class="col-english">Since then, I remain lost.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jab se mili hai tum se meri zindagi</div>
+            <div class="col-devanagari">जब से मिली है तुम से मेरी ज़िंदगी</div>
+            <div class="col-english">Ever since my life met you,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tab se hai tum se har khushi</div>
+            <div class="col-devanagari">तब से है तुम से हर ख़ुशी</div>
+            <div class="col-english">Since then, every happiness is from you.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jab se mili hai tum se meri zindagi</div>
+            <div class="col-devanagari">जब से मिली है तुम से मेरी ज़िंदगी</div>
+            <div class="col-english">Ever since my life met you,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tab se hai tum se har khushi</div>
+            <div class="col-devanagari">तब से है तुम से हर ख़ुशी</div>
+            <div class="col-english">Since then, every happiness is from you.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Roop ki rani tu, khushiyon ka saagar tu</div>
+            <div class="col-devanagari">रूप की रानी तू, ख़ुशियों का सागर तू</div>
+            <div class="col-english">You are the queen of beauty, you are the ocean of happiness,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere bina ab na reh paoon</div>
+            <div class="col-devanagari">तेरे बिना अब ना रह पाऊँ</div>
+            <div class="col-english">Without you, I cannot live now.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Saathiya, tera saath hai jeena</div>
+            <div class="col-devanagari">साथिया, तेरा साथ है जीना</div>
+            <div class="col-english">My companion, living is with your company,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere bina ab na jeena</div>
+            <div class="col-devanagari">तेरे बिना अब ना जीना</div>
+            <div class="col-english">Without you, there is no living now.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Saathiya, tera saath hai jeena</div>
+            <div class="col-devanagari">साथिया, तेरा साथ है जीना</div>
+            <div class="col-english">My companion, living is with your company,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere bina ab na jeena</div>
+            <div class="col-devanagari">तेरे बिना अब ना जीना</div>
+            <div class="col-english">Without you, there is no living now.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jeevan ki har khushi hai tu</div>
+            <div class="col-devanagari">जीवन की हर ख़ुशी है तू</div>
+            <div class="col-english">You are every happiness of life,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere bina ab na reh paoon</div>
+            <div class="col-devanagari">तेरे बिना अब ना रह पाऊँ</div>
+            <div class="col-english">Without you, I cannot live now.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Soona aangan tha jeevan mera</div>
+            <div class="col-devanagari">सूना आँगन था जीवन मेरा</div>
+            <div class="col-english">My life was a desolate courtyard,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Bas gaya pyar is mein tera</div>
+            <div class="col-devanagari">बस गया प्यार इस में तेरा</div>
+            <div class="col-english">Your love has settled in it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kora kagaz tha yeh man mera</div>
+            <div class="col-devanagari">कोरा कागज़ था ये मन मेरा</div>
+            <div class="col-english">My mind was a blank paper,</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Likh diya naam is mein tera</div>
+            <div class="col-devanagari">लिख दिया नाम इस में तेरा</div>
+            <div class="col-english">I wrote your name on it.</div>
+        </div>
+        
+    </section>
+
+    <section>
+        <h2>Vocabulary Guide</h2>
+        <div class="vocab-grid">
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Kora (कोरा)</div>
+                <div class="vocab-pronounce">Koh-raa</div>
+                <div class="vocab-meaning">Blank, empty, untouched. Refers to something pristine or unused.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Kagaz (कागज़)</div>
+                <div class="vocab-pronounce">Kaa-gaz</div>
+                <div class="vocab-meaning">Paper. In this context, it symbolizes the mind or heart as a surface for experiences.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Man (मन)</div>
+                <div class="vocab-pronounce">Mun</div>
+                <div class="vocab-meaning">Mind, heart, soul, inner self. Often used to denote one's feelings and thoughts.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Likh diya (लिख दिया)</div>
+                <div class="vocab-pronounce">Likh dee-yaa</div>
+                <div class="vocab-meaning">Wrote (past tense). Implies an action of inscribing or marking permanently.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Tera (तेरा)</div>
+                <div class="vocab-pronounce">Teh-raa</div>
+                <div class="vocab-meaning">Your (informal, singular). Used when addressing a close friend or beloved.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Soona (सूना)</div>
+                <div class="vocab-pronounce">Soo-naa</div>
+                <div class="vocab-meaning">Desolate, empty, quiet, lonely. Describes a place or state lacking vibrancy.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Aangan (आँगन)</div>
+                <div class="vocab-pronounce">Aan-gun</div>
+                <div class="vocab-meaning">Courtyard, compound. The open space in front or within a house, often a place of gathering.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Jeevan (जीवन)</div>
+                <div class="vocab-pronounce">Jee-vun</div>
+                <div class="vocab-meaning">Life. The state of being alive; existence.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Bas gaya (बस गया)</div>
+                <div class="vocab-pronounce">Bus guh-yaa</div>
+                <div class="vocab-meaning">Settled, resided, made a home. Implies a permanent or deep establishment.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Pyar (प्यार)</div>
+                <div class="vocab-pronounce">Pyaa-r</div>
+                <div class="vocab-meaning">Love. A strong feeling of affection.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Toot na jaaye (टूटना जाए)</div>
+                <div class="vocab-pronounce">Too-t naa jaa-yeh</div>
+                <div class="vocab-meaning">May not break, lest it breaks. Expresses a fear or concern about something being shattered.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Sapne (सपने)</div>
+                <div class="vocab-pronounce">Sup-neh</div>
+                <div class="vocab-meaning">Dreams (plural of sapna). Aspirations, visions, or images experienced during sleep.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Darta hoon (डरता हूँ)</div>
+                <div class="vocab-pronounce">Dur-taa hoo</div>
+                <div class="vocab-meaning">I fear, I am afraid. Expresses a state of apprehension.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Din rain (दिन रैन)</div>
+                <div class="vocab-pronounce">Din rai-n</div>
+                <div class="vocab-meaning">Day and night. Continuously, constantly.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Socha karta hoon (सोचा करता हूँ)</div>
+                <div class="vocab-pronounce">Soh-chaa kur-taa hoo</div>
+                <div class="vocab-meaning">I keep thinking, I used to think. Implies a continuous or habitual thought process.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Nainon (नैनों)</div>
+                <div class="vocab-pronounce">Nai-no</div>
+                <div class="vocab-meaning">Eyes (poetic plural of 'nain'). Often used in poetry for a more lyrical feel.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Basa hai (बसा है)</div>
+                <div class="vocab-pronounce">Bus-aa hai</div>
+                <div class="vocab-meaning">Has resided, has settled. Similar to 'bas gaya' but in a continuous present perfect tense.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Khoya khoya sa (खोया खोया सा)</div>
+                <div class="vocab-pronounce">Kho-yaa kho-yaa saa</div>
+                <div class="vocab-meaning">Lost, absent-minded, dreamy. Describes a state of being engrossed or distracted by thoughts.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Rehta hoon (रहता हूँ)</div>
+                <div class="vocab-pronounce">Reh-taa hoo</div>
+                <div class="vocab-meaning">I remain, I stay, I live. Indicates a continuous state or action.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Zindagi (ज़िंदगी)</div>
+                <div class="vocab-pronounce">Zin-duh-gee</div>
+                <div class="vocab-meaning">Life. The general term for existence.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Khushi (ख़ुशी)</div>
+                <div class="vocab-pronounce">Khoo-shee</div>
+                <div class="vocab-meaning">Happiness, joy. A state of well-being and contentment.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Roop (रूप)</div>
+                <div class="vocab-pronounce">Roo-p</div>
+                <div class="vocab-meaning">Beauty, form, appearance. Often refers to physical attractiveness.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Rani (रानी)</div>
+                <div class="vocab-pronounce">Raa-nee</div>
+                <div class="vocab-meaning">Queen. A female monarch or a term of endearment for a beloved woman.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Saagar (सागर)</div>
+                <div class="vocab-pronounce">Saa-gur</div>
+                <div class="vocab-meaning">Ocean, sea. Metaphorically, a vast quantity or source of something.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Reh paoon (रह पाऊँ)</div>
+                <div class="vocab-pronounce">Reh paa-oo</div>
+                <div class="vocab-meaning">Be able to live/stay. Expresses capability or possibility of continuing to exist or remain.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Saathiya (साथिया)</div>
+                <div class="vocab-pronounce">Saa-thee-yaa</div>
+                <div class="vocab-meaning">Companion, beloved, partner. An affectionate term for someone close.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Jeena (जीना)</div>
+                <div class="vocab-pronounce">Jee-naa</div>
+                <div class="vocab-meaning">To live, living. The act of existing or experiencing life.</div>
+            </div>
+            
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

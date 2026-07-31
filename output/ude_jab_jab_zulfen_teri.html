@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ude Jab Jab Zulfen Teri | Song Translation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --border: #e2e8f0;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-page); color: var(--text-main); line-height: 1.6; margin: 0; padding: 1.5rem 1rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* Navbar / Back Button */
+        .nav-bar { margin-bottom: 1.5rem; }
+        .back-link { text-decoration: none; color: var(--text-muted); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+        .back-link:hover { color: var(--primary); }
+
+        /* Header & Hero */
+        .header-card { background: var(--bg-card); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; border-top: 5px solid var(--primary); }
+        .hero-banner { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem; }
+        
+        /* Thumbnail Styles */
+        .hero-thumb { position: relative; width: 320px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.15); flex-shrink: 0; display: block; }
+        .hero-thumb img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+        .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .hero-thumb:hover .hero-overlay { background: rgba(0,0,0,0.4); }
+        .hero-play { background: #ef4444; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; padding-left: 5px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+
+        .hero-text { flex: 1; min-width: 300px; }
+        h1 { margin: 0 0 0.5rem 0; font-size: 2.2rem; color: #1e293b; line-height: 1.2; }
+        .theme-section { font-size: 1.05rem; color: var(--text-muted); border-left: 4px solid var(--secondary); padding-left: 1rem; margin-top: 1rem; }
+        
+        /* Metadata Grid */
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; background: var(--bg-page); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+        .meta-item { font-size: 0.95rem; }
+        .meta-item strong { display: block; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; letter-spacing: 0.05em; }
+        .tag-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+        .tag { background: #e2e8f0; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; color: #334155; }
+
+        /* Lyrics Section */
+        h2 { font-size: 1.5rem; color: #1e293b; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        .lyrics-header { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 0 1rem 0.5rem 1rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        
+        .lyric-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; padding: 1.5rem 1rem; background: var(--bg-card); border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid var(--border); transition: transform 0.1s; }
+        .lyric-row:hover { transform: scale(1.01); border-color: #cbd5e1; }
+        .col-roman { font-weight: 500; color: #334155; }
+        .col-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.25rem; color: #1d4ed8; }
+        .col-english { font-style: italic; color: #0f766e; }
+
+        /* Vocabulary Section */
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .vocab-card { background: var(--bg-card); padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-left: 4px solid #10b981; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .vocab-word { font-weight: 700; font-size: 1.25rem; color: #064e3b; margin-bottom: 0.5rem; }
+        .vocab-pronounce { display: inline-block; color: #475569; font-family: monospace; background: #f1f5f9; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.9rem; margin-bottom: 0.75rem; }
+        .vocab-meaning { font-size: 0.95rem; color: #334155; }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 900px) {
+            .hero-banner { flex-direction: column; }
+            .hero-thumb { width: 100%; max-width: 500px; margin: 0 auto; }
+            .lyrics-header { display: none; }
+            .lyric-row { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.25rem; }
+            .col-devanagari { font-size: 1.4rem; padding: 0.5rem 0; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="index.html" class="back-link">← Back to Archive</a>
+    </div>
+
+    <header class="header-card">
+        <div class="hero-banner">
+            <a href="https://www.youtube.com/watch?v=i8cm_ide9EY" target="_blank" class="hero-thumb">
+                <img src="https://i.ytimg.com/vi/i8cm_ide9EY/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/i8cm_ide9EY/hqdefault.jpg'" alt="Play Video">
+                <div class="hero-overlay">
+                    <div class="hero-play">▶</div>
+                </div>
+            </a>
+            
+            <div class="hero-text">
+                <h1>Ude Jab Jab Zulfen Teri</h1>
+                <div class="theme-section">
+                    <p>A playful and romantic song where the male protagonist expresses his admiration for the female protagonist's beauty and charm, particularly how her flowing hair captivates him and makes his heart flutter, while she teases him back, acknowledging her allure.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Movie / Album</strong> Naya Daur (1957)</div>
+            <div class="meta-item"><strong>Singers</strong> Mohammed Rafi, Asha Bhosle</div>
+            <div class="meta-item">
+                <strong>Actors</strong>
+                <div class="tag-list">
+                    
+                        <span class="tag">Vyjayantimala</span><span class="tag">Dilip Kumar</span>
+                    
+                </div>
+            </div>
+            <div class="meta-item"><strong>Composer</strong> O.P. Nayyar</div>
+            <div class="meta-item"><strong>Lyricist</strong> Sahir Ludhianvi</div>
+            <div class="meta-item">
+                <strong>Source</strong> 
+                Shemaroo Filmi Gaane 
+                <span class="tag" style="margin-left: 4px;">HD</span>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <h2>Lyrics & Translation</h2>
+        <div class="lyrics-header">
+            <div>Transliteration</div>
+            <div>Native Script</div>
+            <div>English Translation</div>
+        </div>
+
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ude jab jab zulfen teri</div>
+            <div class="col-devanagari">उड़े जब जब ज़ुल्फ़ें तेरी</div>
+            <div class="col-english">Whenever your tresses fly</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jab aise chikne chehre</div>
+            <div class="col-devanagari">जब ऐसे चिकने चेहरे</div>
+            <div class="col-english">When there are such smooth faces (attractive people)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip? (How can one not be attracted?)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ude jab jab zulfen teri</div>
+            <div class="col-devanagari">उड़े जब जब ज़ुल्फ़ें तेरी</div>
+            <div class="col-english">Whenever your tresses fly</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jab aise chikne chehre</div>
+            <div class="col-devanagari">जब ऐसे चिकने चेहरे</div>
+            <div class="col-english">When there are such smooth faces (attractive people)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ho, ek chhotisi baat</div>
+            <div class="col-devanagari">हो, एक छोटी सी बात</div>
+            <div class="col-english">Oh, a small thing</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Meri sun le, meri sun le</div>
+            <div class="col-devanagari">मेरी सुन ले, मेरी सुन ले</div>
+            <div class="col-english">Listen to me, listen to me</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere peechhe, pade hain</div>
+            <div class="col-devanagari">तेरे पीछे पड़े हैं</div>
+            <div class="col-english">Many boys are after you</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kayee ladke, kayee ladke</div>
+            <div class="col-devanagari">कई लड़के, कई लड़के</div>
+            <div class="col-english">Many boys, many boys</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ho, ek chhotisi baat</div>
+            <div class="col-devanagari">हो, एक छोटी सी बात</div>
+            <div class="col-english">Oh, a small thing</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Meri sun le, meri sun le</div>
+            <div class="col-devanagari">मेरी सुन ले, मेरी सुन ले</div>
+            <div class="col-english">Listen to me, listen to me</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere peechhe, pade hain</div>
+            <div class="col-devanagari">तेरे पीछे पड़े हैं</div>
+            <div class="col-english">Many boys are after you</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kayee ladke, kayee ladke</div>
+            <div class="col-devanagari">कई लड़के, कई लड़के</div>
+            <div class="col-english">Many boys, many boys</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">O, in sabki taraf se</div>
+            <div class="col-devanagari">ओ, इन सबकी तरफ़ से</div>
+            <div class="col-english">Oh, on behalf of all of them</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Dil tera, dil tera</div>
+            <div class="col-devanagari">दिल तेरा, दिल तेरा</div>
+            <div class="col-english">Your heart, your heart</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Akela hi machle</div>
+            <div class="col-devanagari">अकेला ही मचले</div>
+            <div class="col-english">Alone flutters</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Akela hi machle</div>
+            <div class="col-devanagari">अकेला ही मचले</div>
+            <div class="col-english">Alone flutters</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ude jab jab zulfen teri</div>
+            <div class="col-devanagari">उड़े जब जब ज़ुल्फ़ें तेरी</div>
+            <div class="col-english">Whenever your tresses fly</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jab aise chikne chehre</div>
+            <div class="col-devanagari">जब ऐसे चिकने चेहरे</div>
+            <div class="col-english">When there are such smooth faces (attractive people)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ho, kehte hain sabhi</div>
+            <div class="col-devanagari">हो, कहते हैं सभी</div>
+            <div class="col-english">Oh, everyone says</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tujhko haseena, haseena</div>
+            <div class="col-devanagari">तुझको हसीना, हसीना</div>
+            <div class="col-english">You are beautiful, beautiful</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere jaisa, nahin koi</div>
+            <div class="col-devanagari">तेरे जैसा नहीं कोई</div>
+            <div class="col-english">There is no one like you</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kameenah, kameenah</div>
+            <div class="col-devanagari">कमीना, कमीना</div>
+            <div class="col-english">You naughty one, naughty one (playful)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ho, kehte hain sabhi</div>
+            <div class="col-devanagari">हो, कहते हैं सभी</div>
+            <div class="col-english">Oh, everyone says</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tujhko haseena, haseena</div>
+            <div class="col-devanagari">तुझको हसीना, हसीना</div>
+            <div class="col-english">You are beautiful, beautiful</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere jaisa, nahin koi</div>
+            <div class="col-devanagari">तेरे जैसा नहीं कोई</div>
+            <div class="col-english">There is no one like you</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kameenah, kameenah</div>
+            <div class="col-devanagari">कमीना, कमीना</div>
+            <div class="col-english">You naughty one, naughty one (playful)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">O, in sabki taraf se</div>
+            <div class="col-devanagari">ओ, इन सबकी तरफ़ से</div>
+            <div class="col-english">Oh, on behalf of all of them</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Dil tera, dil tera</div>
+            <div class="col-devanagari">दिल तेरा, दिल तेरा</div>
+            <div class="col-english">Your heart, your heart</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Akela hi machle</div>
+            <div class="col-devanagari">अकेला ही मचले</div>
+            <div class="col-english">Alone flutters</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Akela hi machle</div>
+            <div class="col-devanagari">अकेला ही मचले</div>
+            <div class="col-english">Alone flutters</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ude jab jab zulfen teri</div>
+            <div class="col-devanagari">उड़े जब जब ज़ुल्फ़ें तेरी</div>
+            <div class="col-english">Whenever your tresses fly</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jab aise chikne chehre</div>
+            <div class="col-devanagari">जब ऐसे चिकने चेहरे</div>
+            <div class="col-english">When there are such smooth faces (attractive people)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ho, tujhko dekhke</div>
+            <div class="col-devanagari">हो, तुझको देखके</div>
+            <div class="col-english">Oh, seeing you</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Dil mera, dil mera</div>
+            <div class="col-devanagari">दिल मेरा, दिल मेरा</div>
+            <div class="col-english">My heart, my heart</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Dhadakta hai, dhadakta hai</div>
+            <div class="col-devanagari">धड़कता है, धड़कता है</div>
+            <div class="col-english">Beats, beats</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere roop ka</div>
+            <div class="col-devanagari">तेरे रूप का</div>
+            <div class="col-english">Of your beauty</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jaadu mujhpe, mujhpe</div>
+            <div class="col-devanagari">जादू मुझपे, मुझपे</div>
+            <div class="col-english">Magic on me, on me</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Chalta hai, chalta hai</div>
+            <div class="col-devanagari">चलता है, चलता है</div>
+            <div class="col-english">Works, works</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ho, tujhko dekhke</div>
+            <div class="col-devanagari">हो, तुझको देखके</div>
+            <div class="col-english">Oh, seeing you</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Dil mera, dil mera</div>
+            <div class="col-devanagari">दिल मेरा, दिल मेरा</div>
+            <div class="col-english">My heart, my heart</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Dhadakta hai, dhadakta hai</div>
+            <div class="col-devanagari">धड़कता है, धड़कता है</div>
+            <div class="col-english">Beats, beats</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Tere roop ka</div>
+            <div class="col-devanagari">तेरे रूप का</div>
+            <div class="col-english">Of your beauty</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jaadu mujhpe, mujhpe</div>
+            <div class="col-devanagari">जादू मुझपे, मुझपे</div>
+            <div class="col-english">Magic on me, on me</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Chalta hai, chalta hai</div>
+            <div class="col-devanagari">चलता है, चलता है</div>
+            <div class="col-english">Works, works</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">O, in sabki taraf se</div>
+            <div class="col-devanagari">ओ, इन सबकी तरफ़ से</div>
+            <div class="col-english">Oh, on behalf of all of them</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Dil tera, dil tera</div>
+            <div class="col-devanagari">दिल तेरा, दिल तेरा</div>
+            <div class="col-english">Your heart, your heart</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Akela hi machle</div>
+            <div class="col-devanagari">अकेला ही मचले</div>
+            <div class="col-english">Alone flutters</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Akela hi machle</div>
+            <div class="col-devanagari">अकेला ही मचले</div>
+            <div class="col-english">Alone flutters</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Ude jab jab zulfen teri</div>
+            <div class="col-devanagari">उड़े जब जब ज़ुल्फ़ें तेरी</div>
+            <div class="col-english">Whenever your tresses fly</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Kawaariyon ka dil machle</div>
+            <div class="col-devanagari">कुँवारियों का दिल मचले</div>
+            <div class="col-english">The hearts of bachelors flutter</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Jab aise chikne chehre</div>
+            <div class="col-devanagari">जब ऐसे चिकने चेहरे</div>
+            <div class="col-english">When there are such smooth faces (attractive people)</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Toh kaise na nazar phisle</div>
+            <div class="col-devanagari">तो कैसे ना नज़र फिसले</div>
+            <div class="col-english">Then how can one's gaze not slip?</div>
+        </div>
+        
+        <div class="lyric-row">
+            <div class="col-roman">Oye hoye hoye hoye</div>
+            <div class="col-devanagari">ओये होये होये होये</div>
+            <div class="col-english">Oh my, oh my, oh my, oh my</div>
+        </div>
+        
+    </section>
+
+    <section>
+        <h2>Vocabulary Guide</h2>
+        <div class="vocab-grid">
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Ude</div>
+                <div class="vocab-pronounce">Oo-day</div>
+                <div class="vocab-meaning">To fly, to flutter, to rise (here, referring to hair flying in the wind).</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Zulfen</div>
+                <div class="vocab-pronounce">Zool-fen</div>
+                <div class="vocab-meaning">Tresses, locks of hair, especially long, flowing hair.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Kawaariyon</div>
+                <div class="vocab-pronounce">Ka-waa-ree-yon</div>
+                <div class="vocab-meaning">Of bachelors, unmarried young men (plural genitive case).</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Machle</div>
+                <div class="vocab-pronounce">Much-lay</div>
+                <div class="vocab-meaning">To flutter, to be restless, to yearn, to be agitated with desire.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Chikne</div>
+                <div class="vocab-pronounce">Chik-nay</div>
+                <div class="vocab-meaning">Smooth, glossy. In this context, it implies attractive, charming, or alluring.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Chehre</div>
+                <div class="vocab-pronounce">Cheh-ray</div>
+                <div class="vocab-meaning">Faces (plural).</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Nazar phisle</div>
+                <div class="vocab-pronounce">Na-zar phis-lay</div>
+                <div class="vocab-meaning">Gaze slips, to be attracted or captivated by someone's appearance.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Peechhe pade hain</div>
+                <div class="vocab-pronounce">Pee-chhay pa-day hain</div>
+                <div class="vocab-meaning">Are after, pursuing, following (often romantically).</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Ladke</div>
+                <div class="vocab-pronounce">Lad-kay</div>
+                <div class="vocab-meaning">Boys, young men (plural).</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Taraf se</div>
+                <div class="vocab-pronounce">Ta-raf say</div>
+                <div class="vocab-meaning">On behalf of, from the side of.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Akela</div>
+                <div class="vocab-pronounce">A-kay-la</div>
+                <div class="vocab-meaning">Alone, solitary.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Haseena</div>
+                <div class="vocab-pronounce">Ha-see-na</div>
+                <div class="vocab-meaning">A beautiful woman, a beauty.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Kameenah</div>
+                <div class="vocab-pronounce">Ka-mee-na</div>
+                <div class="vocab-meaning">Rascal, scoundrel, naughty one. Used playfully here, not as a serious insult.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Dekhke</div>
+                <div class="vocab-pronounce">Dekh-kay</div>
+                <div class="vocab-meaning">By seeing, upon seeing (gerund form of 'dekhna' - to see).</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Dhadakta hai</div>
+                <div class="vocab-pronounce">Dha-dak-ta hai</div>
+                <div class="vocab-meaning">Beats, throbs (referring to the heart).</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Roop</div>
+                <div class="vocab-pronounce">Roop</div>
+                <div class="vocab-meaning">Beauty, form, appearance, charm.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Jaadu</div>
+                <div class="vocab-pronounce">Jaa-doo</div>
+                <div class="vocab-meaning">Magic, spell, enchantment.</div>
+            </div>
+            
+            <div class="vocab-card">
+                <div class="vocab-word">Chalta hai</div>
+                <div class="vocab-pronounce">Chal-ta hai</div>
+                <div class="vocab-meaning">Works, operates, runs (here, referring to magic working its effect).</div>
+            </div>
+            
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
