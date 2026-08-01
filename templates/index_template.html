@@ -98,15 +98,14 @@
                 <th onclick="sortList(2)">Singers</th>
                 <!-- Hidden by default via CSS logic in JS -->
                 <th onclick="sortList(3)" style="display:none;">Actors</th>
-                <th onclick="sortList(4)" style="display:none;">Composer</th>
-                <th onclick="sortList(5)" style="display:none;">Lyricist</th>
+                <th onclick="sortList(4)">Composer</th>
+                <th onclick="sortList(5)">Lyricist</th>
                 <th onclick="sortList(6)" style="display:none;">Source</th>
             </tr>
         </thead>
         <tbody>
             {% for song in songs %}
             <tr>
-
                 <!-- Col 0: Thumbnail Player -->
                 <td>
                     <a href="{{ song.url }}" class="thumb-wrapper">
@@ -116,7 +115,7 @@
                         </div>
                     </a>
                 </td>
-
+                
                 <!-- Col 1: Track Info -->
                 <td>
                     <a href="{{ song.url }}" class="song-title">{{ song.title }}</a>
@@ -133,11 +132,11 @@
                     </div>
                 </td>
 
-                <!-- Col 4: Composer (Hidden by default) -->
-                <td style="display:none;"><span class="meta-text">{{ song.composer }}</span></td>
+                <!-- Col 4: Composer -->
+                <td><span class="meta-text">{{ song.composer }}</span></td>
 
-                <!-- Col 5: Lyricist (Hidden by default) -->
-                <td style="display:none;"><span class="meta-text">{{ song.lyricist }}</span></td>
+                <!-- Col 5: Lyricist -->
+                <td><span class="meta-text">{{ song.lyricist }}</span></td>
 
                 <!-- Col 6: Source (Hidden by default) -->
                 <td style="display:none;">
