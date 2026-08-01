@@ -46,6 +46,7 @@ jobs:
         run: |
           mkdir -p output
           uv run --with jinja2 --with pyyaml python build.py
+          touch output/.nojekyll  # Bypasses GitHub's default Jekyll processing
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -53,8 +54,7 @@ jobs:
       - name: Upload static artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This tells GitHub to ONLY publish the contents of your output folder
-          path: './output' 
+          path: './output'
 
       - name: Deploy to GitHub Pages
         id: deployment
