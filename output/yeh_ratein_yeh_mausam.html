@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeh Ratein Yeh Mausam | Song Translation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --border: #e2e8f0;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-page); color: var(--text-main); line-height: 1.5; margin: 0; padding: 1.5rem 1rem; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        
+        .nav-bar { margin-bottom: 1.5rem; }
+        .back-link { text-decoration: none; color: var(--text-muted); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+        .back-link:hover { color: var(--primary); }
+
+        /* Header & Hero */
+        .header-card { background: var(--bg-card); border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 1.5rem; border-top: 4px solid var(--primary); }
+        .hero-banner { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        
+        .hero-thumb { position: relative; width: 260px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-shrink: 0; display: block; }
+        .hero-thumb img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+        .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .hero-thumb:hover .hero-overlay { background: rgba(0,0,0,0.4); }
+        .hero-play { background: #ef4444; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; padding-left: 4px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+
+        .hero-text { flex: 1; min-width: 300px; }
+        h1 { margin: 0 0 0.25rem 0; font-size: 2rem; color: #1e293b; line-height: 1.2; }
+        .theme-section { font-size: 1rem; color: var(--text-muted); border-left: 3px solid var(--secondary); padding-left: 1rem; margin-top: 0.75rem; }
+        
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; background: var(--bg-page); padding: 1rem; border-radius: 6px; border: 1px solid var(--border); }
+        .meta-item { font-size: 0.9rem; }
+        .meta-item strong { display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; }
+        .tag-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+        .tag { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; color: #334155; }
+
+        /* Main Content Layout */
+        .main-content { display: flex; gap: 1.5rem; align-items: flex-start; position: relative; }
+        .lyrics-container { flex: 1; min-width: 0; }
+        
+        .lyrics-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+        h2 { font-size: 1.3rem; color: #1e293b; margin: 0; }
+        .toggle-btn { background: var(--bg-card); border: 1px solid #cbd5e1; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: var(--text-main); }
+        .toggle-btn:hover { background: #e2e8f0; }
+
+        /* --- SEMANTIC SONG STRUCTURE STYLES --- */
+        .song-section { margin-bottom: 2rem; position: relative; }
+        .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--secondary); letter-spacing: 0.05em; margin-bottom: 0.5rem; padding-left: 0.25rem; }
+        .section-body { border-left: 2px solid #cbd5e1; padding-left: 1rem; }
+
+        .lyric-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; padding: 0.6rem 0.75rem; background: var(--bg-card); border-radius: 6px; margin-bottom: 0.35rem; border: 1px solid var(--border); align-items: center; }
+        .lyric-row:hover { background: #f8fafc; border-color: #cbd5e1; }
+        
+        .col-roman { font-weight: 500; font-size: 0.95rem; color: #334155; }
+        .col-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.1rem; color: #1d4ed8; }
+        .col-english { font-style: italic; font-size: 0.95rem; color: #0f766e; }
+
+        /* Compact Repeated Line */
+        .lyric-row.repeat { grid-template-columns: 1fr; background: transparent; border: 1px dashed var(--border); opacity: 0.75; padding: 0.4rem 0.75rem; box-shadow: none; transition: opacity 0.2s; }
+        .lyric-row.repeat:hover { opacity: 1; background: var(--bg-card); border-color: #cbd5e1; }
+        .repeat-tag { font-size: 0.7rem; background: #e2e8f0; padding: 2px 6px; border-radius: 4px; margin-left: 8px; color: #64748b; font-weight: 600; text-transform: uppercase; }
+
+        /* Sticky Vocab Sidebar */
+        .vocab-panel { width: 320px; flex-shrink: 0; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); position: sticky; top: 1.5rem; max-height: calc(100vh - 3rem); overflow-y: auto; }
+        .vocab-panel.hidden { display: none; }
+        .vocab-header { background: #f1f5f9; padding: 1rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; margin: 0; font-size: 1.1rem; color: #1e293b; font-weight: 700; }
+        .vocab-list { padding: 0 1rem; }
+        .vocab-card { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+        .vocab-card:last-child { border-bottom: none; }
+        .vocab-word { font-weight: 700; font-size: 1.05rem; color: #064e3b; display: flex; justify-content: space-between; align-items: baseline; }
+        .vocab-pronounce { display: inline-block; color: #64748b; font-family: monospace; font-size: 0.8rem; font-weight: 400; }
+        .vocab-meaning { font-size: 0.85rem; color: #475569; margin-top: 0.25rem; line-height: 1.4; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 950px) {
+            .main-content { flex-direction: column; }
+            .vocab-panel { width: 100%; position: static; max-height: none; }
+            .section-body { border-left: none; padding-left: 0; }
+            .lyric-row { grid-template-columns: 1fr; gap: 0.4rem; padding: 1rem; }
+            .col-devanagari { font-size: 1.25rem; padding: 0.4rem 0; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="nav-bar">
+        <a href="index.html" class="back-link">← Back to Archive</a>
+    </div>
+
+    <header class="header-card">
+        <div class="hero-banner">
+
+            <a href="https://www.youtube.com/watch?v=zMGYCKr5trw" target="_blank" rel="noopener noreferrer" class="hero-thumb">
+                <img src="https://i.ytimg.com/vi/zMGYCKr5trw/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/zMGYCKr5trw/hqdefault.jpg'" alt="Play Video">
+                <div class="hero-overlay">
+                    <div class="hero-play">▶</div>
+                </div>
+            </a>
+            
+            <div class="hero-text">
+                <h1>Yeh Ratein Yeh Mausam</h1>
+                <div class="theme-section">
+                    <p>This is a classic romantic duet set against the backdrop of a beautiful night by a river. The song expresses the joy and unwavering commitment of two lovers who promise to stay together forever, celebrating their profound connection under the enchanting moonlight and stars.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Movie / Album</strong> Dilli Ka Thug (1958)</div>
+            <div class="meta-item"><strong>Singers</strong> Asha Bhosle, Kishore Kumar</div>
+            <div class="meta-item">
+                <strong>Actors</strong>
+                <div class="tag-list">
+                    <span class="tag">Nutan</span><span class="tag">Kishore Kumar</span>
+                </div>
+            </div>
+            <div class="meta-item"><strong>Composer</strong> O. P. Nayyar</div>
+            <div class="meta-item"><strong>Lyricist</strong> Majrooh Sultanpuri</div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <!-- Semantic Lyrics Section -->
+        <section class="lyrics-container">
+            <div class="lyrics-toolbar">
+                <h2>Song Structure & Translation</h2>
+                <button class="toggle-btn" onclick="toggleVocab()">📖 Toggle Vocabulary Panel</button>
+            </div>
+
+            <!-- Loop through the structured sections (Stanzas) -->
+            
+            <div class="song-section">
+                <div class="section-label">Chorus 1</div>
+                <div class="section-body">
+                    
+                    <!-- Loop through the lines in each section -->
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Yeh raatein yeh mausam, nadee ka kinaara, yeh chanchal hawa</div>
+                            <div class="col-devanagari">ये रातें ये मौसम, नदी का किनारा, ये चंचल हवा</div>
+                            <div class="col-english">These nights, these seasons, the river bank, this playful breeze,</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Kaha do dilon ne, ke milkar kabhi hum na honge judaa</div>
+                            <div class="col-devanagari">कहा दो दिलों ने, कि मिलकर कभी हम न होंगे जुदा</div>
+                            <div class="col-english">Two hearts have said that, meeting, we will never be separated.</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Collapsed Repeated Line -->
+                        <div class="lyric-row repeat">
+                            <div class="col-roman">↳ Yeh raatein yeh mausam, nadee ka kinaara, yeh chanchal hawa <span class="repeat-tag">↺ Repeated</span></div>
+                        </div>
+                        
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="section-label">Verse 1</div>
+                <div class="section-body">
+                    
+                    <!-- Loop through the lines in each section -->
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Yeh kya baat hai aaj ki chandni mein</div>
+                            <div class="col-devanagari">ये क्या बात है आज की चाँदनी में</div>
+                            <div class="col-english">What is this special thing in today's moonlight?</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Ke hum kho gaye pyaar ki raagini mein</div>
+                            <div class="col-devanagari">कि हम खो गए प्यार की रागिनी में</div>
+                            <div class="col-english">That we are lost in the melody of love.</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Sunaa rahi hai fiza, geet koi</div>
+                            <div class="col-devanagari">सुना रही है फ़िज़ा, गीत कोई</div>
+                            <div class="col-english">The atmosphere is singing some song,</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Jise sunke jaage hain armaan kai</div>
+                            <div class="col-devanagari">जिसे सुनके जागे हैं अरमान कई</div>
+                            <div class="col-english">Hearing which, many desires have awakened.</div>
+                        </div>
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="section-label">Chorus 2</div>
+                <div class="section-body">
+                    
+                    <!-- Loop through the lines in each section -->
+                    
+                        
+                        
+                        <!-- Collapsed Repeated Line -->
+                        <div class="lyric-row repeat">
+                            <div class="col-roman">↳ Kaha do dilon ne, ke milkar kabhi hum na honge judaa <span class="repeat-tag">↺ Repeated</span></div>
+                        </div>
+                        
+                        
+                        
+                    
+                        
+                        
+                        <!-- Collapsed Repeated Line -->
+                        <div class="lyric-row repeat">
+                            <div class="col-roman">↳ Yeh raatein yeh mausam, nadee ka kinaara, yeh chanchal hawa <span class="repeat-tag">↺ Repeated</span></div>
+                        </div>
+                        
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="section-label">Verse 2</div>
+                <div class="section-body">
+                    
+                    <!-- Loop through the lines in each section -->
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Sitaron ki mehfil ne karke ishaara</div>
+                            <div class="col-devanagari">सितारों की महफ़िल ने करके इशारा</div>
+                            <div class="col-english">The gathering of stars, by making a sign,</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Kaha ab to saara jahaan hai tumhara</div>
+                            <div class="col-devanagari">कहा अब तो सारा जहाँ है तुम्हारा</div>
+                            <div class="col-english">Said, "Now the whole world is yours."</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Mohabbat jawan ho, khula aasmaan ho</div>
+                            <div class="col-devanagari">मोहब्बत जवाँ हो, खुला आसमान हो</div>
+                            <div class="col-english">May love be young, may the sky be open,</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Kare koi dil aarzoo aur kya</div>
+                            <div class="col-devanagari">करे कोई दिल आरज़ू और क्या</div>
+                            <div class="col-english">What more could any heart desire?</div>
+                        </div>
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="section-label">Chorus 3</div>
+                <div class="section-body">
+                    
+                    <!-- Loop through the lines in each section -->
+                    
+                        
+                        
+                        <!-- Collapsed Repeated Line -->
+                        <div class="lyric-row repeat">
+                            <div class="col-roman">↳ Kaha do dilon ne, ke milkar kabhi hum na honge judaa <span class="repeat-tag">↺ Repeated</span></div>
+                        </div>
+                        
+                        
+                        
+                    
+                        
+                        
+                        <!-- Collapsed Repeated Line -->
+                        <div class="lyric-row repeat">
+                            <div class="col-roman">↳ Yeh raatein yeh mausam, nadee ka kinaara, yeh chanchal hawa <span class="repeat-tag">↺ Repeated</span></div>
+                        </div>
+                        
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="section-label">Verse 3</div>
+                <div class="section-body">
+                    
+                    <!-- Loop through the lines in each section -->
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Kasam hai tumhe tum agar mujhse roothe</div>
+                            <div class="col-devanagari">कसम है तुम्हें तुम अगर मुझसे रूठे</div>
+                            <div class="col-english">I swear to you, if you get upset with me,</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Rahe saans jab tak yeh bandhan na toote</div>
+                            <div class="col-devanagari">रहे साँस जब तक ये बंधन न टूटे</div>
+                            <div class="col-english">May this bond not break as long as there is breath.</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Tumhe dil diya hai, yeh waada kiya hai</div>
+                            <div class="col-devanagari">तुम्हें दिल दिया है, ये वादा किया है</div>
+                            <div class="col-english">I have given you my heart, I have made this promise,</div>
+                        </div>
+                        
+                        
+                    
+                        
+                        
+                        <!-- Full Transliteration Line -->
+                        <div class="lyric-row">
+                            <div class="col-roman">Sanam main tumhari rahungi sada</div>
+                            <div class="col-devanagari">सनम मैं तुम्हारी रहूँगी सदा</div>
+                            <div class="col-english">My beloved, I will always be yours.</div>
+                        </div>
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="song-section">
+                <div class="section-label">Chorus 4</div>
+                <div class="section-body">
+                    
+                    <!-- Loop through the lines in each section -->
+                    
+                        
+                        
+                        <!-- Collapsed Repeated Line -->
+                        <div class="lyric-row repeat">
+                            <div class="col-roman">↳ Kaha do dilon ne, ke milkar kabhi hum na honge judaa <span class="repeat-tag">↺ Repeated</span></div>
+                        </div>
+                        
+                        
+                        
+                    
+                        
+                        
+                        <!-- Collapsed Repeated Line -->
+                        <div class="lyric-row repeat">
+                            <div class="col-roman">↳ Yeh raatein yeh mausam, nadee ka kinaara, yeh chanchal hawa <span class="repeat-tag">↺ Repeated</span></div>
+                        </div>
+                        
+                        
+                        
+                    
+                    
+                </div>
+            </div>
+            
+            
+        </section>
+
+        <!-- Sticky Vocabulary Sidebar -->
+        <aside class="vocab-panel" id="vocabSidebar">
+            <h3 class="vocab-header">Vocabulary Guide</h3>
+            <div class="vocab-list">
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Raatein
+                        <span class="vocab-pronounce">raa-tein</span>
+                    </div>
+                    <div class="vocab-meaning">Nights (plural of 'raat')</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Mausam
+                        <span class="vocab-pronounce">mau-sum</span>
+                    </div>
+                    <div class="vocab-meaning">Season; weather</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Nadee
+                        <span class="vocab-pronounce">na-dee</span>
+                    </div>
+                    <div class="vocab-meaning">River</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Kinaara
+                        <span class="vocab-pronounce">ki-naa-raa</span>
+                    </div>
+                    <div class="vocab-meaning">Bank, shore, edge</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Chanchal
+                        <span class="vocab-pronounce">chan-chal</span>
+                    </div>
+                    <div class="vocab-meaning">Playful, restless, mischievous, lively</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Hawa
+                        <span class="vocab-pronounce">ha-waa</span>
+                    </div>
+                    <div class="vocab-meaning">Air, breeze, wind</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Judaa
+                        <span class="vocab-pronounce">ju-daa</span>
+                    </div>
+                    <div class="vocab-meaning">Separated, apart</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Chandni
+                        <span class="vocab-pronounce">chaand-nee</span>
+                    </div>
+                    <div class="vocab-meaning">Moonlight</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Raagini
+                        <span class="vocab-pronounce">raa-gi-nee</span>
+                    </div>
+                    <div class="vocab-meaning">Melody, musical mode (often associated with a specific mood or time)</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Fiza
+                        <span class="vocab-pronounce">fi-zaa</span>
+                    </div>
+                    <div class="vocab-meaning">Atmosphere, environment, surroundings</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Armaan
+                        <span class="vocab-pronounce">ar-maan</span>
+                    </div>
+                    <div class="vocab-meaning">Desire, longing, wish</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Kai
+                        <span class="vocab-pronounce">ka-ee</span>
+                    </div>
+                    <div class="vocab-meaning">Many, several</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Sitaron
+                        <span class="vocab-pronounce">si-taa-ron</span>
+                    </div>
+                    <div class="vocab-meaning">Of stars (plural oblique case of 'sitara')</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Mehfil
+                        <span class="vocab-pronounce">meh-fil</span>
+                    </div>
+                    <div class="vocab-meaning">Gathering, assembly, party (often for music or poetry)</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Ishaara
+                        <span class="vocab-pronounce">i-shaa-raa</span>
+                    </div>
+                    <div class="vocab-meaning">Sign, gesture, hint</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Jahaan
+                        <span class="vocab-pronounce">ja-haan</span>
+                    </div>
+                    <div class="vocab-meaning">World</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Mohabbat
+                        <span class="vocab-pronounce">mo-hab-bat</span>
+                    </div>
+                    <div class="vocab-meaning">Love</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Jawan
+                        <span class="vocab-pronounce">ja-waan</span>
+                    </div>
+                    <div class="vocab-meaning">Young, youthful</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Aasmaan
+                        <span class="vocab-pronounce">aas-maan</span>
+                    </div>
+                    <div class="vocab-meaning">Sky, heaven</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Aarzoo
+                        <span class="vocab-pronounce">aar-zoo</span>
+                    </div>
+                    <div class="vocab-meaning">Desire, wish, longing</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Kasam
+                        <span class="vocab-pronounce">ka-sam</span>
+                    </div>
+                    <div class="vocab-meaning">Oath, promise, swear</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Roothe
+                        <span class="vocab-pronounce">roo-the</span>
+                    </div>
+                    <div class="vocab-meaning">Upset, angry, sulking (from the verb 'rootna')</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Saans
+                        <span class="vocab-pronounce">saans</span>
+                    </div>
+                    <div class="vocab-meaning">Breath</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Bandhan
+                        <span class="vocab-pronounce">ban-dhan</span>
+                    </div>
+                    <div class="vocab-meaning">Bond, tie, relationship</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Toote
+                        <span class="vocab-pronounce">too-te</span>
+                    </div>
+                    <div class="vocab-meaning">Break (from the verb 'tootna')</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Waada
+                        <span class="vocab-pronounce">waa-daa</span>
+                    </div>
+                    <div class="vocab-meaning">Promise</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Sanam
+                        <span class="vocab-pronounce">sa-nam</span>
+                    </div>
+                    <div class="vocab-meaning">Beloved, sweetheart</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Rahungi
+                        <span class="vocab-pronounce">ra-hoon-gee</span>
+                    </div>
+                    <div class="vocab-meaning">I will remain/stay (feminine form)</div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-word">
+                        Sada
+                        <span class="vocab-pronounce">sa-daa</span>
+                    </div>
+                    <div class="vocab-meaning">Always, forever</div>
+                </div>
+                
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script>
+    function toggleVocab() {
+        const sidebar = document.getElementById("vocabSidebar");
+        sidebar.classList.toggle("hidden");
+    }
+</script>
+
+</body>
+</html>
