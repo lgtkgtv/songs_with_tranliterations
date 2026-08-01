@@ -1,0 +1,243 @@
+title: "Ude Jab Jab Zulfen Teri"
+youtube_id: "i8cm_ide9EY"
+movie: "Naya Daur"
+year: "1957"
+singers: "Mohammed Rafi, Asha Bhosle"
+actors:
+  - "Dilip Kumar"
+  - "Vyjayanthimala"
+composer: "O. P. Nayyar"
+lyricist: "Sahir Ludhianvi"
+youtube_channel: "NH Hindi Songs"
+resolution: "HD"
+theme: "A playful, flirtatious banter between a young man and woman in a rustic, village setting. The song is a back-and-forth exchange where the man playfully teases the woman about her beauty and its effect on men, and she cleverly responds, matching his wit."
+lyrics:
+  - section_name: "Chorus (Male)"
+    lines:
+      - roman: "Ho ude jab jab zulfen teri"
+        devanagari: "हो उड़े जब जब ज़ुल्फ़ें तेरी"
+        english: "Oh, whenever your hair flies in the breeze"
+        is_repeat: false
+      - roman: "Ho ude jab jab zulfen teri"
+        devanagari: "हो उड़े जब जब ज़ुल्फ़ें तेरी"
+        english: "Oh, whenever your hair flies in the breeze"
+        is_repeat: true
+      - roman: "Kanwariyon ka dil machle"
+        devanagari: "कँवारियों का दिल मचले"
+        english: "The hearts of young, unmarried girls flutter"
+        is_repeat: false
+      - roman: "Kanwariyon ka dil machle, jind meriye"
+        devanagari: "कँवारियों का दिल मचले, जिन्द मेरिये"
+        english: "The hearts of young girls flutter, oh my life"
+        is_repeat: false
+  - section_name: "Chorus (Female)"
+    lines:
+      - roman: "Oh jab aise chikne chehre"
+        devanagari: "ओह जब ऐसे चिकने चेहरे"
+        english: "Oh, when there are such smooth (handsome) faces"
+        is_repeat: false
+      - roman: "Ho jab aise chikne chehre"
+        devanagari: "हो जब ऐसे चिकने चेहरे"
+        english: "Oh, when there are such smooth faces"
+        is_repeat: true
+      - roman: "To kaise na nazar phisle"
+        devanagari: "तो कैसे ना नज़र फिसले"
+        english: "Then how could one's gaze not slip (be distracted)?"
+        is_repeat: false
+      - roman: "To kaise na nazar phisle, jind meriye"
+        devanagari: "तो कैसे ना नज़र फिसले, जिन्द मेरिये"
+        english: "Then how could one's gaze not slip, oh my life"
+        is_repeat: false
+  - section_name: "Verse 1 (Female)"
+    lines:
+      - roman: "Rut pyar karan ki aayi"
+        devanagari: "रुत प्यार करन की आई"
+        english: "The season for loving has arrived"
+        is_repeat: false
+      - roman: "Ho rut pyar karan ki aayi"
+        devanagari: "हो रुत प्यार करन की आई"
+        english: "Oh, the season for loving has arrived"
+        is_repeat: true
+      - roman: "Ke beriyon ke ber pak gaye"
+        devanagari: "के बेरियों के बेर पक गए"
+        english: "That the berries on the bushes have ripened"
+        is_repeat: false
+      - roman: "Ke beriyon ke ber pak gaye, jind meriye"
+        devanagari: "के बेरियों के बेर पक गए, जिन्द मेरिये"
+        english: "That the berries on the bushes have ripened, oh my life"
+        is_repeat: false
+  - section_name: "Verse 1 (Male Response)"
+    lines:
+      - roman: "Kabhi daal idhar bhi phera"
+        devanagari: "कभी डाल इधर भी फेरा"
+        english: "Sometimes, take a stroll in this direction too"
+        is_repeat: false
+      - roman: "Ho kabhi daal idhar bhi phera"
+        devanagari: "हो कभी डाल इधर भी फेरा"
+        english: "Oh, sometimes take a stroll in this direction too"
+        is_repeat: true
+      - roman: "Ke tak tak nain thak gaye"
+        devanagari: "के तक तक नैन थक गए"
+        english: "That my eyes have grown tired from constantly watching (for you)"
+        is_repeat: false
+      - roman: "Ke tak tak nain thak gaye, jind meriye"
+        devanagari: "के तक तक नैन थक गए, जिन्द मेरिये"
+        english: "That my eyes have grown tired from constantly watching, oh my life"
+        is_repeat: false
+  - section_name: "Verse 2 (Male)"
+    lines:
+      - roman: "Us gaon pe sau baar sadke"
+        devanagari: "उस गाँव पे सौ बार सदके"
+        english: "I would sacrifice myself a hundred times for that village"
+        is_repeat: false
+      - roman: "Ho us gaon pe sau baar sadke"
+        devanagari: "हो उस गाँव पे सौ बार सदके"
+        english: "Oh, I would sacrifice myself a hundred times for that village"
+        is_repeat: true
+      - roman: "Ke jahan mera yaar basta"
+        devanagari: "के जहाँ मेरा यार बस्ता"
+        english: "Where my beloved resides"
+        is_repeat: false
+      - roman: "Ke jahan mera yaar basta, jind meriye"
+        devanagari: "के जहाँ मेरा यार बस्ता, जिन्द मेरिये"
+        english: "Where my beloved resides, oh my life"
+        is_repeat: false
+  - section_name: "Verse 2 (Female Response)"
+    lines:
+      - roman: "Pani lene ke bahane aaja"
+        devanagari: "पानी लेने के बहाने आजा"
+        english: "Come under the pretext of fetching water"
+        is_repeat: false
+      - roman: "Ho pani lene ke bahane aaja"
+        devanagari: "हो पानी लेने के बहाने आजा"
+        english: "Oh, come under the pretext of fetching water"
+        is_repeat: true
+      - roman: "Ke tera mera ek rasta"
+        devanagari: "के तेरा मेरा एक रस्ता"
+        english: "Because your path and mine are the same"
+        is_repeat: false
+      - roman: "Ke tera mera ek rasta, jind meriye"
+        devanagari: "के तेरा मेरा एक रस्ता, जिन्द मेरिये"
+        english: "Because your path and mine are the same, oh my life"
+        is_repeat: false
+  - section_name: "Verse 3 (Male)"
+    lines:
+      - roman: "Tujhe chand ke bahane dekhun"
+        devanagari: "तुझे चाँद के बहाने देखूँ"
+        english: "I want to look at you under the pretext of looking at the moon"
+        is_repeat: false
+      - roman: "Ho tujhe chand ke bahane dekhun"
+        devanagari: "हो तुझे चाँद के बहाने देखूँ"
+        english: "Oh, I want to look at you under the pretext of looking at the moon"
+        is_repeat: true
+      - roman: "Tu chhat par aaja goriye"
+        devanagari: "तू छत पर आजा गोरिये"
+        english: "Come up to the roof, beautiful fair maiden"
+        is_repeat: false
+      - roman: "Tu chhat par aaja goriye, jind meriye"
+        devanagari: "तू छत पर आजा गोरिये, जिन्द मेरिये"
+        english: "Come up to the roof, beautiful fair maiden, oh my life"
+        is_repeat: false
+  - section_name: "Verse 3 (Female Response)"
+    lines:
+      - roman: "Abhi chhedenge gali ke sab ladke"
+        devanagari: "अभी छेड़ेंगे गली के सब लड़के"
+        english: "Right now, all the boys in the alley will tease me"
+        is_repeat: false
+      - roman: "Ho abhi chhedenge gali ke sab ladke"
+        devanagari: "हो अभी छेड़ेंगे गली के सब लड़के"
+        english: "Oh, right now all the boys in the alley will tease me"
+        is_repeat: true
+      - roman: "Ke chand bair chhip jane de"
+        devanagari: "के चाँद बैर छिप जाने दे"
+        english: "Let the moon hide behind the clouds first"
+        is_repeat: false
+      - roman: "Ke chand bair chhip jane de, jind meriye"
+        devanagari: "के चाँद बैर छिप जाने दे, जिन्द मेरिये"
+        english: "Let the moon hide first, oh my life"
+        is_repeat: false
+  - section_name: "Verse 4 (Male)"
+    lines:
+      - roman: "Teri chaal hai nagan jaisi"
+        devanagari: "तेरी चाल है नागन जैसी"
+        english: "Your walk is like a female serpent"
+        is_repeat: false
+      - roman: "Ho teri chaal hai nagan jaisi"
+        devanagari: "हो तेरी चाल है नागन जैसी"
+        english: "Oh, your walk is like a female serpent"
+        is_repeat: true
+      - roman: "Re jogi tujhe le jayenge"
+        devanagari: "रे जोगी तुझे ले जाएँगे"
+        english: "The snake-charmers (ascetics) will take you away"
+        is_repeat: false
+      - roman: "Re jogi tujhe le jayenge, jind meriye"
+        devanagari: "रे जोगी तुझे ले जाएँगे, जिन्द मेरिये"
+        english: "The snake-charmers will take you away, oh my life"
+        is_repeat: false
+  - section_name: "Verse 4 (Female Response)"
+    lines:
+      - roman: "Jaye kahin bhi magar hum sajna"
+        devanagari: "जाए कहीं भी मगर हम सजना"
+        english: "Wherever I may go, however, my beloved"
+        is_repeat: false
+      - roman: "Ho jaye kahin bhi magar hum sajna"
+        devanagari: "हो जाए कहीं भी मगर हम सजना"
+        english: "Oh, wherever I may go, however, my beloved"
+        is_repeat: true
+      - roman: "Ye dil tujhe de jayenge"
+        devanagari: "ये दिल तुझे दे जाएँगे"
+        english: "I will leave this heart with you"
+        is_repeat: false
+      - roman: "Ye dil tujhe de jayenge, jind meriye"
+        devanagari: "ये दिल तुझे दे जाएँगे, जिन्द मेरिये"
+        english: "I will leave this heart with you, oh my life"
+        is_repeat: false
+vocabulary:
+  - word: "Zulfen"
+    pronunciation: "Zool-fen"
+    meaning: "Hair, specifically locks or tresses of hair."
+  - word: "Kanwariyon"
+    pronunciation: "Kun-waa-ri-yon"
+    meaning: "Young, unmarried girls/maidens."
+  - word: "Machle"
+    pronunciation: "Much-lay"
+    meaning: "To flutter, act restless, or get excited/agitated."
+  - word: "Jind meriye"
+    pronunciation: "Jind may-ree-yay"
+    meaning: "A Punjabi term of endearment meaning 'Oh my life' or 'my soul'."
+  - word: "Chikne"
+    pronunciation: "Chik-nay"
+    meaning: "Literally 'smooth' or 'glossy'. In this context, it colloquially means handsome or well-groomed."
+  - word: "Phisle"
+    pronunciation: "Phis-lay"
+    meaning: "To slip. Used metaphorically here to mean losing one's focus or becoming distracted by beauty."
+  - word: "Rut"
+    pronunciation: "Root"
+    meaning: "Season (often used poetically to refer to a season of love or spring)."
+  - word: "Beriyon / Ber"
+    pronunciation: "Bay-ri-yon / Bayr"
+    meaning: "Berries / Jujube fruit (Ziziphus mauritiana). A common fruit in rural India."
+  - word: "Sadke"
+    pronunciation: "Sud-kay"
+    meaning: "To sacrifice oneself, or to be utterly devoted to someone/something out of love."
+  - word: "Yaar"
+    pronunciation: "Yaar"
+    meaning: "Friend or beloved/lover."
+  - word: "Basta"
+    pronunciation: "Bus-taa"
+    meaning: "Resides, lives, or settles."
+  - word: "Goriye"
+    pronunciation: "Go-ree-yay"
+    meaning: "A fair-skinned or beautiful young woman."
+  - word: "Chhedenge"
+    pronunciation: "Chhay-deng-gay"
+    meaning: "Will tease, bother, or provoke."
+  - word: "Nagan"
+    pronunciation: "Naa-gun"
+    meaning: "A female serpent/cobra. Often used metaphorically in Indian poetry to describe a woman's graceful, swaying walk."
+  - word: "Jogi"
+    pronunciation: "Jo-gee"
+    meaning: "An ascetic, mystic, or snake-charmer. Here used playfully to imply someone will be captivated by her serpent-like walk."
+  - word: "Sajna"
+    pronunciation: "Suj-naa"
+    meaning: "Beloved, sweetheart, or husband."

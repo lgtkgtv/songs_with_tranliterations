@@ -9,6 +9,9 @@ from google import genai
 from google.genai import types
 from google.genai.errors import APIError
 
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+
 client = genai.Client()
 
 def extract_youtube_id(url):
@@ -45,26 +48,45 @@ def get_youtube_title(url):
 
 
 def check_api_health(client, debug=False):
-    """Sends a minimal request to test if quota is available before starting the batch."""
-    print("🩺 Running pre-flight API health check...")
+    """Sends a moderate-sized request to test if sufficient token quota is available."""
+    print("🩺 Running pre-flight token quota check...")
     try:
-        # A tiny request that consumes almost zero tokens
-        client.models.generate_content(
+        response = client.models.generate_content(
             model='gemini-2.5-flash',
-            contents='ping'
+            contents='Please write a 50-word summary of the Python programming language.',
+            config=types.GenerateContentConfig(max_output_tokens=100)
         )
-        print("  ✓ API is healthy and quota is available.\n")
+        
+        if debug:
+            print(f"  [DEBUG] Pre-flight token check passed. Sample response length: {len(response.text)} chars.")
+            
+        print("  ✓ API is healthy and sufficient token quota is available.\n")
         return True
+        
     except APIError as e:
         err_msg = str(e).lower()
         if "429" in err_msg or "resource_exhausted" in err_msg or "quota" in err_msg:
-            print("  🚨 PRE-FLIGHT FAILED: You are currently out of quota. Try again tomorrow.")
+            # Calculate time until Midnight Pacific Time
+            pacific_tz = ZoneInfo("America/Los_Angeles")
+            now_pt = datetime.now(pacific_tz)
+            
+            # Next midnight PT
+            tomorrow_pt = now_pt + timedelta(days=1)
+            reset_time_pt = tomorrow_pt.replace(hour=0, minute=0, second=0, microsecond=0)
+            
+            # Time delta
+            time_left = reset_time_pt - now_pt
+            hours, remainder = divmod(int(time_left.total_seconds()), 3600)
+            minutes, _ = divmod(remainder, 60)
+            
+            print(f"  🚨 PRE-FLIGHT FAILED: Insufficient daily quota.")
+            print(f"  ⏳ Google's servers reset in: {hours} hours and {minutes} minutes (Midnight Pacific Time).")
             return False
         else:
-            print(f"  ⚠️ Pre-flight check failed with unknown error: {e}")
+            print(f"  ⚠️ Pre-flight API Error: {e}")
             return False
     except Exception as e:
-        print(f"  ⚠️ Pre-flight check failed: {e}")
+        print(f"  ⚠️ Pre-flight Unexpected Error: {e}")
         return False
 
 
