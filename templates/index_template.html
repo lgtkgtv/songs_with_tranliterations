@@ -106,16 +106,17 @@
         <tbody>
             {% for song in songs %}
             <tr>
+
                 <!-- Col 0: Thumbnail Player -->
                 <td>
-                    <a href="https://www.youtube.com/watch?v={{ song.youtube_id }}" target="_blank" rel="noopener noreferrer" class="thumb-wrapper">
+                    <a href="{{ song.url }}" class="thumb-wrapper">
                         <img src="https://i.ytimg.com/vi/{{ song.youtube_id }}/mqdefault.jpg" alt="Thumbnail" class="thumb-img" loading="lazy">
                         <div class="play-overlay">
                             <div class="play-icon">▶</div>
                         </div>
                     </a>
                 </td>
-                
+
                 <!-- Col 1: Track Info -->
                 <td>
                     <a href="{{ song.url }}" class="song-title">{{ song.title }}</a>
