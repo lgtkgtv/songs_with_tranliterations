@@ -1,17 +1,3 @@
-Here is the critiqued and improved version of your `README.md`.
-
-### What was fixed:
-
-1. **Removed Duplicates & Conversational Fluff:** Your file accidentally contained two different README drafts pasted together, along with some of my previous chat replies (e.g., "I have officially logged..."). I stripped all of that out.
-2. **Unified Audience:** I seamlessly merged the "Visitor/Community" intro with the "Developer/Tech" specs so the repository makes sense to both language learners and programmers.
-3. **Fixed Code Blocks:** Several markdown code blocks were missing their closing backticks (`````), which would break the formatting on GitHub. They are now strictly closed and properly highlighted.
-4. **Cleaned the Prompt Template:** The manual AI prompt was malformed with repetitive bullet points. I cleaned it up into a distinct, easy-to-copy text block.
-
----
-
-Copy the block below and replace your entire `README.md` file with it:
-
-```markdown
 # 🎵 AI-Powered Song Transliteration Archive
 
 🌍 **Live Website:** [https://lgtkgtv.github.io/songs_with_tranliterations/](https://lgtkgtv.github.io/songs_with_tranliterations/)
@@ -120,8 +106,3 @@ uv run python build.py
 * **Codebase:** Licensed under the MIT License.
 * **Content:** Song lyrics, titles, and video embeds are the property of their respective copyright holders and are provided here strictly for educational, language-learning, and transliteration purposes under "Fair Use" principles.
 
-```
-
-<FollowUp label="Want to automate the build step?" query="Can you help me write a GitHub Actions YAML file so the site automatically runs build.py and publishes to GitHub Pages every time I push a new song?" />
-
-```
