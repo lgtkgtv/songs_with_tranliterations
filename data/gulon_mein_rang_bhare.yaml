@@ -1,0 +1,176 @@
+title: Gulon Mein Rang Bhare
+movie: Ghazal
+year: '1964'
+singers: Mehdi Hassan
+actors:
+- Mehdi Hassan
+composer: Mehdi Hassan
+lyricist: Faiz Ahmed Faiz
+youtube_channel: EMI Pakistan
+resolution: Standard Definition
+theme: This ghazal expresses a deep yearning for the beloved's return, which is anticipated
+  to bring joy, beauty, and renewal to the world. It metaphorically describes how
+  the beloved's presence would fill flowers with color and the air with fragrance,
+  signifying the revival of hope and life amidst separation and longing.
+lyrics:
+- section_name: Matla
+  lines:
+  - roman: Gulon mein rang bhare baad-e-nau-bahār chale
+    devanagari: गुलों में रंग भरे बाद-ए-नौ-बहार चले
+    english: May flowers be filled with color, may the breeze of new spring blow.
+    is_repeat: false
+  - roman: Chale bhi aao ke gulshan ka karobar chale
+    devanagari: चले भी आओ के गुलशन का कारोबार चले
+    english: Do come, so that the garden's affairs may proceed.
+    is_repeat: false
+- section_name: Couplet 1
+  lines:
+  - roman: Qafas udaas hai yaaron saba se kuch to kaho
+    devanagari: क़फ़स उदास है यारों सबा से कुछ तो कहो
+    english: The cage is sad, friends, say something to the morning breeze.
+    is_repeat: false
+  - roman: Kahin to bahr-e-khuda aaj zikr-e-yaar chale
+    devanagari: कहीं तो बहर-ए-ख़ुदा आज ज़िक्र-ए-यार चले
+    english: For God's sake, let there be some mention of the beloved today.
+    is_repeat: false
+- section_name: Couplet 2
+  lines:
+  - roman: Kabhi to subh tere kunj-e-lab se ho aaghaaz
+    devanagari: कभी तो सुब्ह तेरे कुंज-ए-लब से हो आग़ाज़
+    english: May morning sometimes begin from the corner of your lips.
+    is_repeat: false
+  - roman: Kabhi to shab sar-e-kākul se mushk-bār chale
+    devanagari: कभी तो शब सर-ए-काकुल से मुश्क-बार चले
+    english: May night sometimes spread fragrance from your locks of hair.
+    is_repeat: false
+- section_name: Couplet 3
+  lines:
+  - roman: Baṛā hai dard ka rishta ye dil ghareeb sahi
+    devanagari: बड़ा है दर्द का रिश्ता ये दिल ग़रीब सही
+    english: Great is the bond of pain, though this heart may be poor.
+    is_repeat: false
+  - roman: Tumhare naam pe aayenge ghamgusār chale
+    devanagari: तुम्हारे नाम पे आएंगे ग़मगुसार चले
+    english: On your name, comforters will come.
+    is_repeat: false
+- section_name: Couplet 4
+  lines:
+  - roman: Jo hum pe guzri so guzri magar shab-e-hijrāñ
+    devanagari: जो हम पे गुज़री सो गुज़री मगर शब-ए-हिज्राँ
+    english: What befell us, befell us, but the night of separation,
+    is_repeat: false
+  - roman: Hamare ashk teri āqibat sanwār chale
+    devanagari: हमारे अश्क तेरी आक़िबत संवार चले
+    english: Our tears will adorn your afterlife.
+    is_repeat: false
+- section_name: Couplet 5
+  lines:
+  - roman: Huzoor-e-yaar mein harf-e-tamannā kya maani
+    devanagari: हुज़ूर-ए-यार में हर्फ़-ए-तमन्ना क्या मानी
+    english: In the beloved's presence, what is the meaning of words of desire?
+    is_repeat: false
+  - roman: Ke be kahe bhi unhe sab khabar hai yaar chale
+    devanagari: के बे कहे भी उन्हें सब ख़बर है यार चले
+    english: For even without speaking, the beloved knows everything.
+    is_repeat: false
+- section_name: Maqta
+  lines:
+  - roman: Ikhtiyārāt-e-tassavvur bhi hain kya kya ke Faiz
+    devanagari: इख़्तियारात-ए-तसव्वुर भी हैं क्या क्या के फ़ैज़
+    english: What powers of imagination there are, O Faiz,
+    is_repeat: false
+  - roman: Ke jab bhi chaheñ sar-e-rāh-e-intizār chale
+    devanagari: के जब भी चाहें सर-ए-राह-ए-इंतिज़ार चले
+    english: That whenever we wish, we walk on the path of waiting.
+    is_repeat: false
+vocabulary:
+- word: Gulon
+  pronunciation: Goo-lon
+  meaning: Flowers (plural of 'gul')
+- word: Rang Bhare
+  pronunciation: Rung Bha-re
+  meaning: Be filled with color, become colorful
+- word: Baad-e-nau-bahār
+  pronunciation: Baad-e-nau-ba-haar
+  meaning: Breeze of the new spring ('baad' = wind/breeze, 'nau' = new, 'bahār' =
+    spring)
+- word: Gulshan
+  pronunciation: Gul-shan
+  meaning: Garden, flowerbed
+- word: Karobar
+  pronunciation: Kaa-ro-baar
+  meaning: Affairs, business, proceedings (here, implying the natural cycle and vibrancy)
+- word: Qafas
+  pronunciation: Qa-fas
+  meaning: Cage (metaphorically, the heart or a confined state)
+- word: Yaaron
+  pronunciation: Yaa-ron
+  meaning: O friends! (vocative plural of 'yaar')
+- word: Saba
+  pronunciation: Sa-baa
+  meaning: Morning breeze, gentle breeze (often personified as a messenger)
+- word: Bahr-e-khuda
+  pronunciation: Ba-hr-e-khu-daa
+  meaning: For God's sake, for the sake of God
+- word: Zikr-e-yaar
+  pronunciation: Zikr-e-yaar
+  meaning: Mention or remembrance of the beloved ('zikr' = mention/remembrance, 'yaar'
+    = beloved/friend)
+- word: Kunj-e-lab
+  pronunciation: Kunj-e-lab
+  meaning: Corner of the lips ('kunj' = corner/nook, 'lab' = lip)
+- word: Aaghaaz
+  pronunciation: Aa-ghaaz
+  meaning: Beginning, start, initiation
+- word: Shab
+  pronunciation: Shab
+  meaning: Night
+- word: Sar-e-kākul
+  pronunciation: Sar-e-kaa-kul
+  meaning: From the locks/curls of hair ('sar' = head/top, 'kākul' = lock of hair)
+- word: Mushk-bār
+  pronunciation: Mushk-baar
+  meaning: Fragrant, musk-spreading ('mushk' = musk, 'bār' = spreading/raining)
+- word: Ghareeb
+  pronunciation: Gha-reeb
+  meaning: Poor, humble, destitute
+- word: Ghamgusār
+  pronunciation: Gham-gu-saar
+  meaning: Comforter, sympathizer, one who shares sorrow ('gham' = sorrow, 'gusār'
+    = one who dispels)
+- word: Guzri
+  pronunciation: Guz-ree
+  meaning: Passed, happened, transpired
+- word: Shab-e-hijrāñ
+  pronunciation: Shab-e-hij-raan
+  meaning: Night of separation ('shab' = night, 'hijrāñ' = separation)
+- word: Ashk
+  pronunciation: Ashk
+  meaning: Tears
+- word: Āqibat
+  pronunciation: Aa-qi-bat
+  meaning: Future, destiny, ultimate outcome (often referring to the afterlife)
+- word: Sanwār chale
+  pronunciation: San-waar cha-le
+  meaning: Will adorn, will beautify, will set right
+- word: Huzoor-e-yaar
+  pronunciation: Hu-zoor-e-yaar
+  meaning: In the presence of the beloved ('huzoor' = presence/majesty)
+- word: Harf-e-tamannā
+  pronunciation: Harf-e-ta-man-naa
+  meaning: Words of desire, expression of longing ('harf' = word/letter, 'tamannā'
+    = desire/wish)
+- word: Maani
+  pronunciation: Maa-nee
+  meaning: Meaning, significance
+- word: Ikhtiyārāt-e-tassavvur
+  pronunciation: Ikh-ti-yaa-raat-e-ta-sav-vur
+  meaning: Powers/abilities of imagination ('ikhtiyārāt' = powers/authorities, 'tassavvur'
+    = imagination)
+- word: Faiz
+  pronunciation: Faiz
+  meaning: The pen name (takhallus) of the poet, Faiz Ahmed Faiz
+- word: Sar-e-rāh-e-intizār
+  pronunciation: Sar-e-raah-e-in-ti-zaar
+  meaning: On the path of waiting ('sar' = on, 'rāh' = path, 'intizār' = waiting)
+youtube_id: Ds8nabK0vE8
