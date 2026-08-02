@@ -1,0 +1,209 @@
+title: Aaye Kuch Abr Kuch Sharab Aaye
+movie: The Latest
+year: '1982'
+singers: Jagjit Singh
+actors:
+- Jagjit Singh
+composer: Jagjit Singh
+lyricist: Faiz Ahmed Faiz
+youtube_channel: Saregama Music
+resolution: High Definition (e.g., 1080p)
+theme: This ghazal by Faiz Ahmed Faiz, sung by Jagjit Singh, speaks of the arrival
+  of clouds and wine, symbolizing a time of gathering, celebration, and perhaps forgetting
+  sorrows. It's a call to embrace the present moment, to drink and be merry, as life
+  is fleeting and opportunities for joy are rare. It touches upon themes of companionship,
+  longing, and the transient nature of existence.
+lyrics:
+- section_name: Couplet 1
+  lines:
+  - roman: Aaye kuchh abr kuchh sharaab aaye
+    devanagari: आए कुछ अब्र कुछ शराब आए
+    english: Some clouds have arrived, some wine has arrived,
+    is_repeat: false
+  - roman: Aaye kuchh abr kuchh sharaab aaye
+    devanagari: आए कुछ अब्र कुछ शराब आए
+    english: Some clouds have arrived, some wine has arrived,
+    is_repeat: true
+  - roman: Uske baad aaye jo azaab aaye
+    devanagari: उसके बाद आए जो अज़ाब आए
+    english: Whatever torments came after that, let them come.
+    is_repeat: false
+  - roman: Uske baad aaye jo azaab aaye
+    devanagari: उसके बाद आए जो अज़ाब आए
+    english: Whatever torments came after that, let them come.
+    is_repeat: true
+- section_name: Couplet 2
+  lines:
+  - roman: Baam-e-meena se mahtaab utre
+    devanagari: बाम-ए-मीना से महताब उतरे
+    english: The moon descends from the roof of the wine-flask,
+    is_repeat: false
+  - roman: Baam-e-meena se mahtaab utre
+    devanagari: बाम-ए-मीना से महताब उतरे
+    english: The moon descends from the roof of the wine-flask,
+    is_repeat: true
+  - roman: Aur dast-e-saaqi mein aaftaab aaye
+    devanagari: और दस्त-ए-साक़ी में आफ़ताब आए
+    english: And the sun arrives in the hand of the cup-bearer.
+    is_repeat: false
+  - roman: Aur dast-e-saaqi mein aaftaab aaye
+    devanagari: और दस्त-ए-साक़ी में आफ़ताब आए
+    english: And the sun arrives in the hand of the cup-bearer.
+    is_repeat: true
+- section_name: Couplet 3
+  lines:
+  - roman: Har rag-e-khoon mein phir charaagaan ho
+    devanagari: हर रग-ए-ख़ून में फिर चराग़ाँ हो
+    english: Let every vein of blood be illuminated again,
+    is_repeat: false
+  - roman: Har rag-e-khoon mein phir charaagaan ho
+    devanagari: हर रग-ए-ख़ून में फिर चराग़ाँ हो
+    english: Let every vein of blood be illuminated again,
+    is_repeat: true
+  - roman: Phir saamne woh be-naqaab aaye
+    devanagari: फिर सामने वो बे-नक़ाब आए
+    english: Let her appear unveiled before me again.
+    is_repeat: false
+  - roman: Phir saamne woh be-naqaab aaye
+    devanagari: फिर सामने वो बे-नक़ाब आए
+    english: Let her appear unveiled before me again.
+    is_repeat: true
+- section_name: Couplet 4
+  lines:
+  - roman: Aye dil-e-be-taab, thehar ja zara
+    devanagari: ऐ दिल-ए-बेताब, ठहर जा ज़रा
+    english: Oh restless heart, just wait a little,
+    is_repeat: false
+  - roman: Aye dil-e-be-taab, thehar ja zara
+    devanagari: ऐ दिल-ए-बेताब, ठहर जा ज़रा
+    english: Oh restless heart, just wait a little,
+    is_repeat: true
+  - roman: Phir wahi gardish-e-roz-o-shab aaye
+    devanagari: फिर वही गर्दिश-ए-रोज़-ओ-शब आए
+    english: Lest the same cycle of day and night returns.
+    is_repeat: false
+  - roman: Phir wahi gardish-e-roz-o-shab aaye
+    devanagari: फिर वही गर्दिश-ए-रोज़-ओ-शब आए
+    english: Lest the same cycle of day and night returns.
+    is_repeat: true
+- section_name: Couplet 5
+  lines:
+  - roman: Jis tarah mehr-o-maah ke qadam
+    devanagari: जिस तरह मेहर-ओ-माह के क़दम
+    english: Just as the steps of the sun and moon
+    is_repeat: false
+  - roman: Jis tarah mehr-o-maah ke qadam
+    devanagari: जिस तरह मेहर-ओ-माह के क़दम
+    english: Just as the steps of the sun and moon
+    is_repeat: true
+  - roman: Gardish-e-gardoon mein be-hisaab aaye
+    devanagari: गर्दिश-ए-गरदूँ में बे-हिसाब आए
+    english: Come countless in the revolution of the heavens.
+    is_repeat: false
+  - roman: Gardish-e-gardoon mein be-hisaab aaye
+    devanagari: गर्दिश-ए-गरदूँ में बे-हिसाब आए
+    english: Come countless in the revolution of the heavens.
+    is_repeat: true
+- section_name: Concluding Couplet (Maqta)
+  lines:
+  - roman: Faiz phir kab kisi ke kaam aaye
+    devanagari: फ़ैज़ फिर कब किसी के काम आए
+    english: Faiz, when did he ever come to anyone's aid,
+    is_repeat: false
+  - roman: Faiz phir kab kisi ke kaam aaye
+    devanagari: फ़ैज़ फिर कब किसी के काम आए
+    english: Faiz, when did he ever come to anyone's aid,
+    is_repeat: true
+  - roman: Jab sar-e-dasht koi azaab aaye
+    devanagari: जब सर-ए-दश्त कोई अज़ाब आए
+    english: When some torment arrived in the wilderness?
+    is_repeat: false
+  - roman: Jab sar-e-dasht koi azaab aaye
+    devanagari: जब सर-ए-दश्त कोई अज़ाब आए
+    english: When some torment arrived in the wilderness?
+    is_repeat: true
+vocabulary:
+- word: Abr
+  pronunciation: ubr
+  meaning: Cloud; often used poetically to signify a harbinger of rain, or in this
+    context, a prelude to a joyful occasion (like wine).
+- word: Sharaab
+  pronunciation: sharaab
+  meaning: Wine, alcohol; a common motif in ghazals, symbolizing joy, intoxication,
+    or spiritual ecstasy.
+- word: Azaab
+  pronunciation: azaab
+  meaning: Torment, suffering, punishment, calamity; here, it implies that once the
+    moment of joy (clouds and wine) arrives, any subsequent troubles are welcome or
+    can be endured.
+- word: Baam
+  pronunciation: baam
+  meaning: Roof, terrace, top; in poetry, it can refer to a high place or the rim
+    of a vessel.
+- word: Meena
+  pronunciation: meena
+  meaning: Wine-flask, decanter, a glass bottle for wine; often associated with beauty
+    and the act of serving wine.
+- word: Mahtaab
+  pronunciation: mahtaab
+  meaning: Moon; a symbol of beauty, serenity, and often the beloved in Urdu poetry.
+- word: Dast
+  pronunciation: dust
+  meaning: Hand; specifically, the hand of the cup-bearer.
+- word: Saaqi
+  pronunciation: saaqi
+  meaning: Cup-bearer, one who serves wine; a central figure in ghazals, often representing
+    a divine or beloved entity who offers solace or intoxication.
+- word: Aaftaab
+  pronunciation: aaftaab
+  meaning: Sun; a symbol of brilliance, warmth, and power.
+- word: Rag-e-khoon
+  pronunciation: rug-e-khoon
+  meaning: 'Vein of blood (rag: vein, khoon: blood); poetically, it refers to the
+    innermost being or every fiber of one''s existence.'
+- word: Charaagaan
+  pronunciation: charaagaan
+  meaning: Illumination, lighting up with lamps/lights, celebration; signifies a festive
+    atmosphere or inner joy.
+- word: Be-naqaab
+  pronunciation: be-naqaab
+  meaning: Unveiled, without a veil, exposed; refers to the beloved revealing their
+    true beauty or presence.
+- word: Dil-e-be-taab
+  pronunciation: dil-e-be-taab
+  meaning: 'Restless heart (dil: heart, be-taab: restless, impatient); a common expression
+    for a heart filled with longing or agitation.'
+- word: Thehar ja
+  pronunciation: thehar ja
+  meaning: Stop, wait; an imperative to pause or be patient.
+- word: Gardish
+  pronunciation: gurdish
+  meaning: Revolution, circulation, turning, cycle; often refers to the turning of
+    fate or the passage of time.
+- word: Roz-o-shab
+  pronunciation: roz-o-shub
+  meaning: 'Day and night (roz: day, shab: night); signifies the continuous flow of
+    time or the daily routine.'
+- word: Mehr-o-maah
+  pronunciation: mehr-o-maah
+  meaning: 'Sun and moon (mehr: sun, maah: moon); celestial bodies often used to represent
+    constancy, cycles, or the beloved''s beauty.'
+- word: Qadam
+  pronunciation: qudum
+  meaning: Step, foot; refers to the movement or journey.
+- word: Gardoon
+  pronunciation: gurdoon
+  meaning: Sky, heavens, firmament, fate, destiny; the celestial sphere or the overarching
+    power that governs events.
+- word: Be-hisaab
+  pronunciation: be-hisaab
+  meaning: Countless, immeasurable, without limit; in abundance.
+- word: Faiz
+  pronunciation: faiz
+  meaning: The pen name (takhallus) of the poet, Faiz Ahmed Faiz. In this context,
+    it's the poet referring to himself. It also means grace, bounty, abundance.
+- word: Sar-e-dasht
+  pronunciation: sur-e-dusht
+  meaning: 'In the wilderness/desert (sar: head/top, dasht: desert/wilderness); poetically,
+    a place of desolation, hardship, or isolation.'
+youtube_id: 9NRGE8mStqI

@@ -1,0 +1,212 @@
+title: Aaja Sanam Madhur Chandini Mein Hum
+movie: Chori Chori
+year: '1956'
+singers: Lata Mangeshkar, Manna Dey
+actors:
+- Raj Kapoor
+- Nargis
+composer: Shankar-Jaikishan
+lyricist: Hasrat Jaipuri
+youtube_channel: Raj Kapoor
+resolution: HD
+theme: This song is a classic romantic duet where two lovers express their desire
+  to meet in the sweet moonlight, escape to a new world, and find a secluded haven
+  for their love, believing that their union will bring joy and beauty even to desolate
+  places. It speaks of deep yearning and the transformative power of love.
+lyrics:
+- section_name: Chorus
+  lines:
+  - roman: Aaja sanam madhur chandini mein hum
+    devanagari: आजा सनम मधुर चाँदनी में हम
+    english: Come, my beloved, in this sweet moonlight, we
+    is_repeat: false
+  - roman: Tum milein to veerane mein bhi aa jaayegi bahaar
+    devanagari: तुम मिलो तो वीराने में भी आ जाएगी बहार
+    english: If you meet me, even in a wilderness, spring will arrive.
+    is_repeat: false
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: false
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+  - roman: Kehta hai dil aur machalta hai dil
+    devanagari: कहता है दिल और मचलता है दिल
+    english: The heart speaks and the heart yearns.
+    is_repeat: false
+  - roman: Mere saajan le chal mujhe taaron ke paar
+    devanagari: मेरे साजन ले चल मुझे तारों के पार
+    english: My beloved, take me beyond the stars.
+    is_repeat: false
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+- section_name: Verse 1
+  lines:
+  - roman: Ek naya sansaar basa lein
+    devanagari: एक नया संसार बसा लें
+    english: Let's build a new world,
+    is_repeat: false
+  - roman: Milke hum aur tum
+    devanagari: मिलके हम और तुम
+    english: You and I, together.
+    is_repeat: false
+  - roman: Pyaar se door kahin
+    devanagari: प्यार से दूर कहीं
+    english: Far away, with love,
+    is_repeat: false
+  - roman: Ek naya sansaar basa lein
+    devanagari: एक नया संसार बसा लें
+    english: Let's build a new world,
+    is_repeat: true
+  - roman: Milke hum aur tum
+    devanagari: मिलके हम और तुम
+    english: You and I, together.
+    is_repeat: true
+  - roman: Pyaar se door kahin
+    devanagari: प्यार से दूर कहीं
+    english: Far away, with love,
+    is_repeat: true
+  - roman: Teesra na ho koi
+    devanagari: तीसरा ना हो कोई
+    english: Where there is no third person.
+    is_repeat: false
+  - roman: Teesra na ho koi
+    devanagari: तीसरा ना हो कोई
+    english: Where there is no third person.
+    is_repeat: true
+- section_name: Chorus Repeat 1
+  lines:
+  - roman: Aaja sanam madhur chandini mein hum
+    devanagari: आजा सनम मधुर चाँदनी में हम
+    english: Come, my beloved, in this sweet moonlight, we
+    is_repeat: true
+  - roman: Tum milein to veerane mein bhi aa jaayegi bahaar
+    devanagari: तुम मिलो तो वीराने में भी आ जाएगी बहार
+    english: If you meet me, even in a wilderness, spring will arrive.
+    is_repeat: true
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+- section_name: Verse 2
+  lines:
+  - roman: Jaan-e-wafa, chal kahin aur chal
+    devanagari: जान-ए-वफ़ा, चल कहीं और चल
+    english: O faithful beloved, let's go somewhere else.
+    is_repeat: false
+  - roman: Is chaman mein ab apna guzaara nahin
+    devanagari: इस चमन में अब अपना गुज़ारा नहीं
+    english: In this garden, we can no longer live.
+    is_repeat: false
+  - roman: Jaan-e-wafa, chal kahin aur chal
+    devanagari: जान-ए-वफ़ा, चल कहीं और चल
+    english: O faithful beloved, let's go somewhere else.
+    is_repeat: true
+  - roman: Is chaman mein ab apna guzaara nahin
+    devanagari: इस चमन में अब अपना गुज़ारा नहीं
+    english: In this garden, we can no longer live.
+    is_repeat: true
+  - roman: Pyaar ki manzil
+    devanagari: प्यार की मंज़िल
+    english: The destination of love,
+    is_repeat: false
+  - roman: Pyaar ki manzil
+    devanagari: प्यार की मंज़िल
+    english: The destination of love.
+    is_repeat: true
+- section_name: Chorus Repeat 2
+  lines:
+  - roman: Aaja sanam madhur chandini mein hum
+    devanagari: आजा सनम मधुर चाँदनी में हम
+    english: Come, my beloved, in this sweet moonlight, we
+    is_repeat: true
+  - roman: Tum milein to veerane mein bhi aa jaayegi bahaar
+    devanagari: तुम मिलो तो वीराने में भी आ जाएगी बहार
+    english: If you meet me, even in a wilderness, spring will arrive.
+    is_repeat: true
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+  - roman: Kehta hai dil aur machalta hai dil
+    devanagari: कहता है दिल और मचलता है दिल
+    english: The heart speaks and the heart yearns.
+    is_repeat: true
+  - roman: Mere saajan le chal mujhe taaron ke paar
+    devanagari: मेरे साजन ले चल मुझे तारों के पार
+    english: My beloved, take me beyond the stars.
+    is_repeat: true
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+  - roman: Jhoomne lagega aasman
+    devanagari: झूमने लगेगा आसमान
+    english: The sky will begin to sway.
+    is_repeat: true
+vocabulary:
+- word: Sanam
+  pronunciation: Sa-nam
+  meaning: Beloved, sweetheart.
+- word: Madhur
+  pronunciation: Ma-dhur
+  meaning: Sweet, melodious, pleasant.
+- word: Chandini
+  pronunciation: Chan-di-ni
+  meaning: Moonlight.
+- word: Veerane
+  pronunciation: Vee-raa-ne
+  meaning: Wilderness, desolate place, barren land.
+- word: Bahaar
+  pronunciation: Ba-haar
+  meaning: Spring, bloom, prosperity, joy.
+- word: Jhoomne lagega
+  pronunciation: Jhoom-ne la-ge-ga
+  meaning: Will start swaying, will begin to dance or swing joyfully.
+- word: Aasman
+  pronunciation: Aas-maan
+  meaning: Sky, heaven.
+- word: Machalta hai
+  pronunciation: Ma-chal-ta hai
+  meaning: Yearns, becomes restless, fidgets, is agitated by desire.
+- word: Saajan
+  pronunciation: Saa-jan
+  meaning: Beloved, darling (often used for a male lover or husband).
+- word: Taaron ke paar
+  pronunciation: Taa-ron ke paar
+  meaning: Beyond the stars.
+- word: Sansaar
+  pronunciation: San-saar
+  meaning: World, universe, life.
+- word: Basa lein
+  pronunciation: Ba-saa lein
+  meaning: Let's build, let's settle, let's establish.
+- word: Jaan-e-wafa
+  pronunciation: Jaan-e-wa-faa
+  meaning: O faithful beloved (literally 'soul of faithfulness').
+- word: Chaman
+  pronunciation: Cha-man
+  meaning: Garden, flowerbed.
+- word: Guzaara nahin
+  pronunciation: Gu-zaa-raa na-hin
+  meaning: Cannot live, no sustenance, no survival, cannot make a living.
+- word: Manzil
+  pronunciation: Man-zil
+  meaning: Destination, goal, objective.
+youtube_id: FkNzykVN85k
