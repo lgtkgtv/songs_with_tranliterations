@@ -1,0 +1,205 @@
+title: Jaaiye Aap Kahan Jayenge
+movie: Mere Sanam
+year: '1965'
+singers: Asha Bhosle
+actors:
+- Asha Parekh
+- Biswajit Chatterjee
+composer: O.P. Nayyar
+lyricist: Majrooh Sultanpuri
+youtube_channel: Shemaroo Filmi Gaane
+resolution: HD
+theme: This song is a playful and romantic challenge from a lover to their beloved,
+  asserting that no matter where they go, the lover's memory, gaze, and voice will
+  follow them. It conveys a sense of inescapable love and longing, promising that
+  the beloved will always be reminded of their connection.
+lyrics:
+- section_name: Chorus
+  lines:
+  - roman: Jaaiye aap kahan jayenge
+    devanagari: जाइये आप कहाँ जायेंगे
+    english: Where will you go?
+    is_repeat: false
+  - roman: Yeh nazar laut ke phir aayegi
+    devanagari: यह नज़र लौट के फिर आएगी
+    english: This gaze will return again.
+    is_repeat: false
+  - roman: Jaaiye aap kahan jayenge
+    devanagari: जाइये आप कहाँ जायेंगे
+    english: Where will you go?
+    is_repeat: true
+  - roman: Yeh nazar laut ke phir aayegi
+    devanagari: यह नज़र लौट के फिर आएगी
+    english: This gaze will return again.
+    is_repeat: true
+  - roman: Door tak aap ke peechhe peechhe
+    devanagari: दूर तक आप के पीछे पीछे
+    english: Far behind you,
+    is_repeat: false
+  - roman: Meri awaaz chali aayegi
+    devanagari: मेरी आवाज़ चली आएगी
+    english: My voice will follow.
+    is_repeat: false
+  - roman: Jaaiye aap kahan jayenge
+    devanagari: जाइये आप कहाँ जायेंगे
+    english: Where will you go?
+    is_repeat: true
+  - roman: Yeh nazar laut ke phir aayegi
+    devanagari: यह नज़र लौट के फिर आएगी
+    english: This gaze will return again.
+    is_repeat: true
+- section_name: Verse 1
+  lines:
+  - roman: Aap ko pyaar mera yaad jahan aayega
+    devanagari: आप को प्यार मेरा याद जहाँ आएगा
+    english: Wherever you remember my love,
+    is_repeat: false
+  - roman: Koi kaanta sa mere dil mein chubha jayega
+    devanagari: कोई काँटा सा मेरे दिल में चुभा जाएगा
+    english: A thorn will prick my heart.
+    is_repeat: false
+  - roman: Aap ko pyaar mera yaad jahan aayega
+    devanagari: आप को प्यार मेरा याद जहाँ आएगा
+    english: Wherever you remember my love,
+    is_repeat: true
+  - roman: Koi kaanta sa mere dil mein chubha jayega
+    devanagari: कोई काँटा सा मेरे दिल में चुभा जाएगा
+    english: A thorn will prick my heart.
+    is_repeat: true
+  - roman: Meri awaaz chali aayegi
+    devanagari: मेरी आवाज़ चली आएगी
+    english: My voice will follow.
+    is_repeat: true
+  - roman: Jaaiye aap kahan jayenge
+    devanagari: जाइये आप कहाँ जायेंगे
+    english: Where will you go?
+    is_repeat: true
+  - roman: Yeh nazar laut ke phir aayegi
+    devanagari: यह नज़र लौट के फिर आएगी
+    english: This gaze will return again.
+    is_repeat: true
+- section_name: Verse 2
+  lines:
+  - roman: Jab koi baat labon tak aake ruk jayegi
+    devanagari: जब कोई बात लबों तक आके रुक जाएगी
+    english: When some words come to your lips and stop,
+    is_repeat: false
+  - roman: Aur aankhon se barsaat chali aayegi
+    devanagari: और आँखों से बरसात चली आएगी
+    english: And rain (tears) will come from your eyes.
+    is_repeat: false
+  - roman: Jab koi baat labon tak aake ruk jayegi
+    devanagari: जब कोई बात लबों तक आके रुक जाएगी
+    english: When some words come to your lips and stop,
+    is_repeat: true
+  - roman: Aur aankhon se barsaat chali aayegi
+    devanagari: और आँखों से बरसात चली आएगी
+    english: And rain (tears) will come from your eyes.
+    is_repeat: true
+  - roman: Meri awaaz chali aayegi
+    devanagari: मेरी आवाज़ चली आएगी
+    english: My voice will follow.
+    is_repeat: true
+  - roman: Jaaiye aap kahan jayenge
+    devanagari: जाइये आप कहाँ जायेंगे
+    english: Where will you go?
+    is_repeat: true
+  - roman: Yeh nazar laut ke phir aayegi
+    devanagari: यह नज़र लौट के फिर आएगी
+    english: This gaze will return again.
+    is_repeat: true
+- section_name: Chorus Repeat
+  lines:
+  - roman: Door tak aap ke peechhe peechhe
+    devanagari: दूर तक आप के पीछे पीछे
+    english: Far behind you,
+    is_repeat: true
+  - roman: Meri awaaz chali aayegi
+    devanagari: मेरी आवाज़ चली आएगी
+    english: My voice will follow.
+    is_repeat: true
+  - roman: Jaaiye aap kahan jayenge
+    devanagari: जाइये आप कहाँ जायेंगे
+    english: Where will you go?
+    is_repeat: true
+  - roman: Yeh nazar laut ke phir aayegi
+    devanagari: यह नज़र लौट के फिर आएगी
+    english: This gaze will return again.
+    is_repeat: true
+vocabulary:
+- word: Jaaiye
+  pronunciation: jaa-ee-ye
+  meaning: Go (formal/polite imperative form of 'jaana' - to go)
+- word: Kahan
+  pronunciation: ka-haan
+  meaning: Where
+- word: Jayenge
+  pronunciation: jaa-yen-ge
+  meaning: Will go (future tense, plural/formal for 'you')
+- word: Nazar
+  pronunciation: na-zar
+  meaning: Gaze, sight, look, vision
+- word: Laut ke
+  pronunciation: lout ke
+  meaning: Returning, turning back (from 'lautna' - to return)
+- word: Phir
+  pronunciation: phir
+  meaning: Again, then
+- word: Aayegi
+  pronunciation: aa-ye-gi
+  meaning: Will come (future tense, feminine singular, referring to 'nazar')
+- word: Door tak
+  pronunciation: door tak
+  meaning: Far, far away, up to a distance
+- word: Peechhe peechhe
+  pronunciation: pee-chhe pee-chhe
+  meaning: Behind, following closely
+- word: Awaaz
+  pronunciation: a-waaz
+  meaning: Voice, sound
+- word: Chali aayegi
+  pronunciation: cha-li aa-ye-gi
+  meaning: Will come along, will follow (feminine singular, referring to 'awaaz')
+- word: Pyaar
+  pronunciation: pyaar
+  meaning: Love
+- word: Yaad
+  pronunciation: yaad
+  meaning: Memory, remembrance
+- word: Jahan
+  pronunciation: ja-haan
+  meaning: Wherever
+- word: Aayega
+  pronunciation: aa-ye-ga
+  meaning: Will come (future tense, masculine singular, referring to 'yaad')
+- word: Kaanta
+  pronunciation: kaan-ta
+  meaning: Thorn
+- word: Sa
+  pronunciation: sa
+  meaning: Like, similar to (suffix)
+- word: Dil
+  pronunciation: dil
+  meaning: Heart
+- word: Chubha jayega
+  pronunciation: chu-bhaa jaa-ye-ga
+  meaning: Will prick, will pierce (from 'chubhāna' - to prick)
+- word: Labon
+  pronunciation: la-bon
+  meaning: Lips (plural of 'lab')
+- word: Tak
+  pronunciation: tak
+  meaning: Up to, till
+- word: Aake
+  pronunciation: aa-ke
+  meaning: Having come (from 'aana' - to come)
+- word: Ruk jayegi
+  pronunciation: ruk jaa-ye-gi
+  meaning: Will stop (from 'rukna' - to stop)
+- word: Aankhon
+  pronunciation: aan-khon
+  meaning: Eyes (plural of 'aankh')
+- word: Barsaat
+  pronunciation: bar-saat
+  meaning: Rain, shower (here, metaphorically refers to tears)
+youtube_id: MpawL4IZfKg

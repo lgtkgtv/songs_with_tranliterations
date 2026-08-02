@@ -1,0 +1,151 @@
+title: Aap Ki Nazron Ne Samjha
+movie: Anpadh
+year: '1962'
+singers: Lata Mangeshkar
+actors:
+- Mala Sinha
+- Dharmendra
+- Balraj Sahni
+composer: Madan Mohan
+lyricist: Raja Mehdi Ali Khan
+youtube_channel: Saregama Music
+resolution: 4K
+theme: This song is a heartfelt expression of gratitude and profound love. The protagonist
+  feels validated and complete because their beloved's gaze has recognized their worth,
+  bringing an end to their search for meaning and a sense of belonging.
+lyrics:
+- section_name: Chorus
+  lines:
+  - roman: Aap ki nazron ne samjha, pyaar ke qaabil mujhe
+    devanagari: आप की नज़रों ने समझा, प्यार के क़ाबिल मुझे
+    english: Your eyes understood me, worthy of love
+    is_repeat: false
+  - roman: Dil ki ai dhadkan thaher ja, mil gayi manzil mujhe
+    devanagari: दिल की ऐ धड़कन ठहर जा, मिल गई मंज़िल मुझे
+    english: Oh heartbeat of my heart, stop, I have found my destination
+    is_repeat: false
+  - roman: Aap ki nazron ne samjha
+    devanagari: आप की नज़रों ने समझा
+    english: Your eyes understood me
+    is_repeat: false
+- section_name: Verse 1
+  lines:
+  - roman: Ji hamein manzoor hai, aapka ye faisla
+    devanagari: जी हमें मंज़ूर है, आपका ये फ़ैसला
+    english: Yes, we accept, this decision of yours
+    is_repeat: false
+  - roman: Keh rahi hai har nazar, banda parvar shukriya
+    devanagari: कह रही है हर नज़र, बंदा परवर शुक्रिया
+    english: Every gaze is saying, 'Protector of servants, thank you'
+    is_repeat: false
+  - roman: Do jahaan ki khair ho, mil gaya dard-e-dil ko
+    devanagari: दो जहाँ की ख़ैर हो, मिल गया दर्द-ए-दिल को
+    english: May both worlds be blessed, the pain of my heart has found
+    is_repeat: false
+  - roman: Ab qaraar-e-dil mujhe
+    devanagari: अब क़रार-ए-दिल मुझे
+    english: Now, peace for my heart
+    is_repeat: false
+- section_name: Chorus
+  lines:
+  - roman: Aap ki nazron ne samjha, pyaar ke qaabil mujhe
+    devanagari: आप की नज़रों ने समझा, प्यार के क़ाबिल मुझे
+    english: Your eyes understood me, worthy of love
+    is_repeat: true
+  - roman: Dil ki ai dhadkan thaher ja, mil gayi manzil mujhe
+    devanagari: दिल की ऐ धड़कन ठहर जा, मिल गई मंज़िल मुझे
+    english: Oh heartbeat of my heart, stop, I have found my destination
+    is_repeat: true
+  - roman: Aap ki nazron ne samjha
+    devanagari: आप की नज़रों ने समझा
+    english: Your eyes understood me
+    is_repeat: true
+- section_name: Verse 2
+  lines:
+  - roman: Aap ki manzil hoon main, meri manzil aap hain
+    devanagari: आप की मंज़िल हूँ मैं, मेरी मंज़िल आप हैं
+    english: I am your destination, and you are my destination
+    is_repeat: false
+  - roman: Kyun main na miloon aap se, jaan-e-man jab aap hain
+    devanagari: क्यूँ मैं ना मिलूँ आप से, जान-ए-मन जब आप हैं
+    english: Why shouldn't I meet you, my beloved, when you are here?
+    is_repeat: false
+  - roman: Main khushi se mar na jaaun, aaj gar mil jaaye
+    devanagari: मैं ख़ुशी से मर ना जाऊँ, आज गर मिल जाए
+    english: May I not die of happiness, if today I find
+    is_repeat: false
+  - roman: Zindagi haasil mujhe
+    devanagari: ज़िंदगी हासिल मुझे
+    english: Life achieved for me
+    is_repeat: false
+- section_name: Chorus
+  lines:
+  - roman: Aap ki nazron ne samjha, pyaar ke qaabil mujhe
+    devanagari: आप की नज़रों ने समझा, प्यार के क़ाबिल मुझे
+    english: Your eyes understood me, worthy of love
+    is_repeat: true
+  - roman: Dil ki ai dhadkan thaher ja, mil gayi manzil mujhe
+    devanagari: दिल की ऐ धड़कन ठहर जा, मिल गई मंज़िल मुझे
+    english: Oh heartbeat of my heart, stop, I have found my destination
+    is_repeat: true
+  - roman: Aap ki nazron ne samjha
+    devanagari: आप की नज़रों ने समझा
+    english: Your eyes understood me
+    is_repeat: true
+vocabulary:
+- word: Nazron
+  pronunciation: naz-rōñ
+  meaning: Plural of 'nazar', meaning 'gazes' or 'eyes'. In context, 'your eyes'.
+- word: Samjha
+  pronunciation: sam-jhā
+  meaning: Understood, comprehended. From the verb 'samajhna' (to understand).
+- word: Pyaar
+  pronunciation: pyār
+  meaning: Love, affection.
+- word: Qaabil
+  pronunciation: qā-bil
+  meaning: Worthy, capable, deserving.
+- word: Dhadkan
+  pronunciation: dhad-kan
+  meaning: Heartbeat, pulse.
+- word: Thaher ja
+  pronunciation: tha-her jā
+  meaning: Stop, pause. An imperative command.
+- word: Manzil
+  pronunciation: man-zil
+  meaning: Destination, goal, objective.
+- word: Manzoor
+  pronunciation: man-zōōr
+  meaning: Accepted, agreed, approved.
+- word: Faisla
+  pronunciation: fai-slā
+  meaning: Decision, judgment, verdict.
+- word: Banda parvar
+  pronunciation: ban-dā par-var
+  meaning: Literally 'cherisher of servants'. A respectful and deferential term of
+    address, often used for a king, master, or beloved, implying 'my protector' or
+    'my benefactor'.
+- word: Shukriya
+  pronunciation: shuk-ri-yā
+  meaning: Thank you, gratitude.
+- word: Do jahaan
+  pronunciation: dō ja-hān
+  meaning: Both worlds (this world and the afterlife/next world). Implies complete
+    well-being.
+- word: Khair
+  pronunciation: khair
+  meaning: Well-being, goodness, welfare.
+- word: Dard-e-dil
+  pronunciation: dard-e-dil
+  meaning: Pain of the heart, heartache.
+- word: Qaraar-e-dil
+  pronunciation: qa-rār-e-dil
+  meaning: Peace of heart, solace, tranquility for the heart.
+- word: Jaan-e-man
+  pronunciation: jān-e-man
+  meaning: Beloved, darling, soulmate. Literally 'life of my heart/soul'.
+- word: Haasil
+  pronunciation: hā-sil
+  meaning: Achieved, obtained, acquired. In context, 'life has been achieved' or 'I
+    have found my life's purpose'.
+youtube_id: sbRnApA51XU

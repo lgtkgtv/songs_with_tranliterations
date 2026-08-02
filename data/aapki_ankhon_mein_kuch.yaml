@@ -1,0 +1,201 @@
+title: Aapki Ankhon Mein Kuch
+movie: Ghar
+year: '1978'
+singers: Kishore Kumar, Lata Mangeshkar
+actors:
+- Vinod Mehra
+- Rekha
+composer: R D Burman
+lyricist: Gulzar
+youtube_channel: Saregama Music
+resolution: 4K
+theme: This is a tender romantic duet where the lovers express their unspoken feelings
+  and the profound impact of their gaze on each other. It beautifully captures the
+  magic of new love and the comfort found in a shared, silent understanding.
+lyrics:
+- section_name: Chorus (Lata)
+  lines:
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: false
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+  - roman: Aap se bhi khoobsoorat aapke andaaz hain
+    devanagari: आप से भी ख़ूबसूरत आपके अंदाज़ हैं
+    english: Even more beautiful than you are your styles/manners.
+    is_repeat: false
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+- section_name: Chorus (Kishore)
+  lines:
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+  - roman: Aap se bhi khoobsoorat aapke andaaz hain
+    devanagari: आप से भी ख़ूबसूरत आपके अंदाज़ हैं
+    english: Even more beautiful than you are your styles/manners.
+    is_repeat: true
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+- section_name: Verse 1 (Lata)
+  lines:
+  - roman: Lab hile to mogare ke phool khilte hain kahin
+    devanagari: लब हिले तो मोगरे के फूल खिलते हैं कहीं
+    english: When your lips move, jasmine flowers bloom somewhere.
+    is_repeat: false
+  - roman: Lab hile to mogare ke phool khilte hain kahin
+    devanagari: लब हिले तो मोगरे के फूल खिलते हैं कहीं
+    english: When your lips move, jasmine flowers bloom somewhere.
+    is_repeat: true
+  - roman: Aapki aankhon mein kya saahil bhi milte hain kahin
+    devanagari: आपकी आँखों में क्या साहिल भी मिलते हैं कहीं
+    english: Do shores also meet somewhere in your eyes?
+    is_repeat: false
+  - roman: Aapki aankhon mein kya saahil bhi milte hain kahin
+    devanagari: आपकी आँखों में क्या साहिल भी मिलते हैं कहीं
+    english: Do shores also meet somewhere in your eyes?
+    is_repeat: true
+  - roman: Aapki khaamoshiyon mein bhi kai aawaaz hain
+    devanagari: आपकी ख़ामोशियों में भी कई आवाज़ हैं
+    english: Even in your silences, there are many voices.
+    is_repeat: false
+  - roman: Aapki khaamoshiyon mein bhi kai aawaaz hain
+    devanagari: आपकी ख़ामोशियों में भी कई आवाज़ हैं
+    english: Even in your silences, there are many voices.
+    is_repeat: true
+  - roman: Aap se bhi khoobsoorat aapke andaaz hain
+    devanagari: आप से भी ख़ूबसूरत आपके अंदाज़ हैं
+    english: Even more beautiful than you are your styles/manners.
+    is_repeat: true
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+- section_name: Chorus (Kishore)
+  lines:
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+  - roman: Aap se bhi khoobsoorat aapke andaaz hain
+    devanagari: आप से भी ख़ूबसूरत आपके अंदाज़ हैं
+    english: Even more beautiful than you are your styles/manners.
+    is_repeat: true
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+- section_name: Verse 2 (Kishore)
+  lines:
+  - roman: Aapki baaton mein phir kuchh narm si sargam bhi hai
+    devanagari: आपकी बातों में फिर कुछ नर्म सी सरगम भी है
+    english: In your words, there is also a soft melody.
+    is_repeat: false
+  - roman: Aapki baaton mein phir kuchh narm si sargam bhi hai
+    devanagari: आपकी बातों में फिर कुछ नर्म सी सरगम भी है
+    english: In your words, there is also a soft melody.
+    is_repeat: true
+  - roman: Aapki palkon ke saaye mein chhupi shabnam bhi hai
+    devanagari: आपकी पलकों के साये में छुपी शबनम भी है
+    english: Hidden in the shadow of your eyelids is also dew.
+    is_repeat: false
+  - roman: Aapki palkon ke saaye mein chhupi shabnam bhi hai
+    devanagari: आपकी पलकों के साये में छुपी शबनम भी है
+    english: Hidden in the shadow of your eyelids is also dew.
+    is_repeat: true
+  - roman: Aapki aankhon mein sachchi chaahaton ka raaz hai
+    devanagari: आपकी आँखों में सच्ची चाहतों का राज़ है
+    english: In your eyes, there is the secret of true desires.
+    is_repeat: false
+  - roman: Aapki aankhon mein sachchi chaahaton ka raaz hai
+    devanagari: आपकी आँखों में सच्ची चाहतों का राज़ है
+    english: In your eyes, there is the secret of true desires.
+    is_repeat: true
+  - roman: Aap se bhi khoobsoorat aapke andaaz hain
+    devanagari: आप से भी ख़ूबसूरत आपके अंदाज़ हैं
+    english: Even more beautiful than you are your styles/manners.
+    is_repeat: true
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+- section_name: Outro (Lata & Kishore)
+  lines:
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+  - roman: Aap se bhi khoobsoorat aapke andaaz hain
+    devanagari: आप से भी ख़ूबसूरत आपके अंदाज़ हैं
+    english: Even more beautiful than you are your styles/manners.
+    is_repeat: true
+  - roman: Aapki aankhon mein kuchh mahake hue se raaz hain
+    devanagari: आपकी आँखों में कुछ महके हुए से राज़ हैं
+    english: In your eyes, there are some fragrant secrets.
+    is_repeat: true
+vocabulary:
+- word: mahake
+  pronunciation: mah-ke
+  meaning: fragrant, perfumed. Here, it implies secrets that are pleasant or alluring.
+- word: raaz
+  pronunciation: raaz
+  meaning: secret.
+- word: khoobsoorat
+  pronunciation: khoob-soo-rat
+  meaning: beautiful.
+- word: andaaz
+  pronunciation: an-daaz
+  meaning: style, manner, demeanor, way.
+- word: lab
+  pronunciation: lab
+  meaning: lips. (Poetic term for 'honth')
+- word: hile
+  pronunciation: hi-le
+  meaning: moved, stirred.
+- word: mogare
+  pronunciation: mo-ga-re
+  meaning: jasmine (specifically, Arabian jasmine).
+- word: khilte hain
+  pronunciation: khil-te hain
+  meaning: bloom, blossom.
+- word: saahil
+  pronunciation: saa-hil
+  meaning: shore, coast, bank. Metaphorically, it could mean boundaries or meeting
+    points.
+- word: khaamoshiyon
+  pronunciation: khaa-mo-shi-yon
+  meaning: silences (plural of khaamoshi).
+- word: aawaaz
+  pronunciation: aa-waaz
+  meaning: voice, sound.
+- word: narm
+  pronunciation: narm
+  meaning: soft, gentle.
+- word: sargam
+  pronunciation: sar-gam
+  meaning: 'musical scale, melody (specifically, the Indian equivalent of solfège:
+    Sa, Re, Ga, Ma).'
+- word: palkon
+  pronunciation: pal-kon
+  meaning: eyelids (plural of palak).
+- word: saaye
+  pronunciation: saa-ye
+  meaning: shadow, shade (plural of saaya).
+- word: chhupi
+  pronunciation: chhu-pi
+  meaning: hidden.
+- word: shabnam
+  pronunciation: shab-nam
+  meaning: dew, dewdrops.
+- word: chaahaton
+  pronunciation: chaa-ha-ton
+  meaning: desires, wishes, affections (plural of chaahat).
+youtube_id: daxuKHBWiKE
