@@ -46,7 +46,6 @@ def get_youtube_title(url):
         print(f"  ⚠️ Warning: Could not fetch video title directly ({e})")
     return None
 
-
 def check_api_health(client, debug=False):
     """Sends a moderate-sized request to test if sufficient token quota is available."""
     print("🩺 Running pre-flight token quota check...")
@@ -66,15 +65,10 @@ def check_api_health(client, debug=False):
     except APIError as e:
         err_msg = str(e).lower()
         if "429" in err_msg or "resource_exhausted" in err_msg or "quota" in err_msg:
-            # Calculate time until Midnight Pacific Time
             pacific_tz = ZoneInfo("America/Los_Angeles")
             now_pt = datetime.now(pacific_tz)
-            
-            # Next midnight PT
             tomorrow_pt = now_pt + timedelta(days=1)
             reset_time_pt = tomorrow_pt.replace(hour=0, minute=0, second=0, microsecond=0)
-            
-            # Time delta
             time_left = reset_time_pt - now_pt
             hours, remainder = divmod(int(time_left.total_seconds()), 3600)
             minutes, _ = divmod(remainder, 60)
@@ -88,8 +82,6 @@ def check_api_health(client, debug=False):
     except Exception as e:
         print(f"  ⚠️ Pre-flight Unexpected Error: {e}")
         return False
-
-
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch and transliterate song lyrics using Gemini API.")
@@ -111,7 +103,6 @@ def main():
     processed_ids = get_processed_youtube_ids('data')
     print(f"Loaded {len(processed_ids)} previously processed song(s).")
 
-    # --- NEW: Run the pre-flight check ---
     if not check_api_health(client, args.debug):
         print("🛑 Aborting script. Fix API issues before running the batch.")
         return
@@ -122,8 +113,6 @@ def main():
     added_count = 0
     skipped_count = 0
     error_count = 0
-    
-    # --- NEW: Global Quota Tracking ---
     daily_quota_hit = False
     consecutive_429_errors = 0 
 
@@ -217,7 +206,7 @@ def main():
         )
         
         max_retries = 4
-        response_text = None
+        parsed_data = None
         
         for attempt in range(1, max_retries + 1):
             try:
@@ -229,11 +218,23 @@ def main():
                     contents=full_prompt,
                     config=config
                 )
-                response_text = response.text
                 
-                # --- NEW: Reset quota tracker on success ---
+                # Clean any markdown artifacts that might break the parser
+                raw_text = response.text
+                clean_json_string = re.sub(r'```(?:json)?\n?(.*?)\n?```', r'\1', raw_text, flags=re.DOTALL).strip()
+                
+                # Validate JSON INSIDE the retry loop
+                parsed_data = json.loads(clean_json_string)
+                
+                # If we hit this line, the JSON is valid and parsing succeeded
                 consecutive_429_errors = 0 
                 break
+                
+            except json.decoder.JSONDecodeError as e:
+                print(f"  ⚠️ AI generated malformed JSON (Attempt {attempt}/{max_retries}). Retrying...")
+                if args.debug:
+                    print(f"  [DEBUG] JSON Error: {e}")
+                time.sleep(3) # Short pause before retrying the generation
                 
             except APIError as e:
                 err_msg = str(e).lower()
@@ -243,7 +244,6 @@ def main():
                 if "429" in err_msg or "resource_exhausted" in err_msg or "quota" in err_msg:
                     consecutive_429_errors += 1
                     
-                    # --- NEW: Hard halt condition ---
                     if consecutive_429_errors >= 3:
                         print(f"  🚨 3 consecutive quota errors detected. Halting script to prevent API penalties.")
                         daily_quota_hit = True
@@ -267,13 +267,12 @@ def main():
             print("🛑 Batch process aborted due to assumed daily quota exhaustion.")
             break
 
-        if not response_text:
-            print(f"  ✗ Failed to retrieve response for {url} after {max_retries} attempts.")
+        if not parsed_data:
+            print(f"  ✗ Failed to retrieve and parse valid JSON for {url} after {max_retries} attempts.")
             error_count += 1
             continue
 
         try:
-            parsed_data = json.loads(response_text)
             parsed_data['youtube_id'] = yt_id
             
             title = parsed_data.get('title', f'song_{yt_id or index}')
@@ -291,13 +290,8 @@ def main():
             time.sleep(5)
 
         except Exception as e:
-            print(f"  ✗ Failed to parse JSON or save YAML for {url}: {e}")
+            print(f"  ✗ Failed to save YAML for {url}: {e}")
             error_count += 1
-            if args.debug and response_text:
-                debug_file = f"debug_error_{yt_id}.log"
-                with open(debug_file, 'w', encoding='utf-8') as f:
-                    f.write(response_text)
-                print(f"  [DEBUG] Dumped the raw broken AI response to {debug_file} for inspection.")
 
     print("\n" + "=" * 55)
     print("📊 BATCH PROCESSING SUMMARY")
